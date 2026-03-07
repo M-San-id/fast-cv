@@ -1,9 +1,9 @@
-import React from 'react'
-
 function templates() {
   return (
-    <div>templates</div>
-  )
+    <div>
+      
+    </div>
+  );
 }
 
-export default templates
+export default templates;

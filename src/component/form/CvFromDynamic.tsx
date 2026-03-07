@@ -1321,6 +1321,7 @@ const CVFormDynamic: React.FC<CVFormDynamicProps> = ({
       certificates,
       languages,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     personalInfo,
     summary,
@@ -1331,7 +1332,6 @@ const CVFormDynamic: React.FC<CVFormDynamicProps> = ({
     devices,
     certificates,
     languages,
-    onDataUpdate,
   ]);
 
   // --------------------------------------------------------------------------

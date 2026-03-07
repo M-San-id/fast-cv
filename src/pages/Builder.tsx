@@ -1,12 +1,7 @@
-import CVFormDynamic from "../component/form/CvFromDynamic";
+import Cv1 from "../tamplates/Cv1";
 
 function Builder() {
-  return (
-    <CVFormDynamic
-      formType="Type 1"
-      onDataUpdate={(data) => console.log(data)}
-    />
-  );
+  return <Cv1 />;
 }
 
 export default Builder;
