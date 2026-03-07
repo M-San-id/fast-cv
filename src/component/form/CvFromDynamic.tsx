@@ -58,6 +58,13 @@ export interface Language extends BaseEntity {
   proficiency: string;
 }
 
+export interface Project extends BaseEntity {
+  name: string;
+  year: string;
+  description: string;
+  details: Task[];
+}
+
 export interface CVData {
   personalInfo: PersonalInfo;
   summary: string;
@@ -68,6 +75,7 @@ export interface CVData {
   devices: Skill[];
   certificates: Certificate[];
   languages: Language[];
+  projects: Project[];
 }
 
 export interface CVFormDynamicProps {
@@ -157,6 +165,14 @@ export interface CertificateSectionProps extends GenericItemHandlers {
 export interface LanguageSectionProps extends GenericItemHandlers {
   languages: Language[];
   setLanguages: React.Dispatch<React.SetStateAction<Language[]>>;
+}
+
+export interface ProjectSectionProps extends GenericItemHandlers {
+  projects: Project[];
+  setProjects: React.Dispatch<React.SetStateAction<Project[]>>;
+  addDetail: (projId: string) => void;
+  updateDetail: (projId: string, detailId: string, value: string) => void;
+  removeDetail: (projId: string, detailId: string) => void;
 }
 
 export function PersonalInfoSection({
@@ -1278,6 +1294,209 @@ export function LanguageSection({
   );
 }
 
+export function ProjectSection({
+  projects,
+  setProjects,
+  addItem,
+  updateItem,
+  removeItem,
+  addDetail,
+  updateDetail,
+  removeDetail,
+}: ProjectSectionProps) {
+  return (
+    <section className="space-y-4">
+      <div className="flex justify-between items-center pb-2 border-b border-gray-100">
+        <h3 className="text-xl font-semibold text-gray-800">5. Proyek</h3>
+        <button
+          type="button"
+          onClick={() =>
+            addItem(setProjects, {
+              name: "",
+              year: "",
+              description: "",
+              details: [],
+            })
+          }
+          className="flex items-center gap-1 px-4 py-2 bg-indigo-600 text-white font-medium rounded-lg shadow hover:bg-indigo-700 transition"
+        >
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M12 4v16m8-8H4"
+            ></path>
+          </svg>
+          Tambah Proyek
+        </button>
+      </div>
+
+      <div className="space-y-4">
+        {projects.length === 0 && (
+          <div className="text-center py-8 bg-gray-50 border border-dashed border-gray-300 rounded-lg text-gray-500">
+            Belum ada proyek yang ditambahkan.
+          </div>
+        )}
+        {projects.map((proj) => (
+          <div
+            key={proj.id}
+            className="p-5 md:p-6 border border-gray-200 rounded-lg bg-gray-50 shadow-sm relative group"
+          >
+            <button
+              type="button"
+              onClick={() => removeItem(setProjects, proj.id)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition"
+              title="Hapus Proyek"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                ></path>
+              </svg>
+            </button>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Nama Proyek
+                </label>
+                <input
+                  type="text"
+                  value={proj.name}
+                  onChange={(e) =>
+                    updateItem(setProjects, proj.id, "name", e.target.value)
+                  }
+                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-indigo-500 focus:ring-indigo-500 bg-white"
+                  placeholder="Misal: Aplikasi E-Commerce"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Tahun Pengerjaan
+                </label>
+                <input
+                  type="text"
+                  value={proj.year}
+                  onChange={(e) =>
+                    updateItem(setProjects, proj.id, "year", e.target.value)
+                  }
+                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-indigo-500 focus:ring-indigo-500 bg-white"
+                  placeholder="Misal: 2024 atau 2023 - 2024"
+                />
+              </div>
+
+              <div className="col-span-1 md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Deskripsi Proyek
+                </label>
+                <textarea
+                  value={proj.description}
+                  onChange={(e) =>
+                    updateItem(
+                      setProjects,
+                      proj.id,
+                      "description",
+                      e.target.value,
+                    )
+                  }
+                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-indigo-500 focus:ring-indigo-500 bg-white resize-y min-h-[60px]"
+                  rows={3}
+                  placeholder="Jelaskan tentang proyek, tujuan, dan kontribusi Anda..."
+                />
+              </div>
+            </div>
+
+            {/* Detail Proyek Dinamis */}
+            <div className="mt-6 border-t border-gray-200 pt-4">
+              <div className="flex justify-between items-center mb-3">
+                <label className="block text-sm font-medium text-gray-700">
+                  Detail Proyek
+                </label>
+                <button
+                  type="button"
+                  onClick={() => addDetail(proj.id)}
+                  className="flex items-center gap-1 text-xs px-3 py-1.5 bg-indigo-50 text-indigo-700 font-semibold rounded-md border border-indigo-200 hover:bg-indigo-100 transition"
+                >
+                  <svg
+                    className="w-3 h-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M12 4v16m8-8H4"
+                    ></path>
+                  </svg>
+                  Tambah Detail
+                </button>
+              </div>
+
+              <ul className="space-y-3">
+                {proj.details.map((detail) => (
+                  <li key={detail.id} className="flex gap-2 items-start">
+                    <span className="text-gray-400 mt-2">•</span>
+                    <textarea
+                      value={detail.description}
+                      onChange={(e) =>
+                        updateDetail(proj.id, detail.id, e.target.value)
+                      }
+                      className="flex-1 rounded-md border border-gray-300 py-2 px-3 focus:border-indigo-500 focus:ring-indigo-500 text-sm min-h-[40px] bg-white resize-y"
+                      placeholder="Jelaskan detail atau fitur proyek..."
+                      rows={2}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => removeDetail(proj.id, detail.id)}
+                      className="mt-2 text-gray-400 hover:text-red-500 transition"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M6 18L18 6M6 6l12 12"
+                        ></path>
+                      </svg>
+                    </button>
+                  </li>
+                ))}
+                {proj.details.length === 0 && (
+                  <li className="text-sm text-gray-500 italic">
+                    Belum ada detail proyek.
+                  </li>
+                )}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // ============================================================================
 // Main Component
 // ============================================================================
@@ -1305,6 +1524,7 @@ const CVFormDynamic: React.FC<CVFormDynamicProps> = ({
   const [devices, setDevices] = useState<Skill[]>([]);
   const [certificates, setCertificates] = useState<Certificate[]>([]);
   const [languages, setLanguages] = useState<Language[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   // --------------------------------------------------------------------------
   // Data Communication to Parent
@@ -1320,6 +1540,7 @@ const CVFormDynamic: React.FC<CVFormDynamicProps> = ({
       devices,
       certificates,
       languages,
+      projects,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
@@ -1332,6 +1553,7 @@ const CVFormDynamic: React.FC<CVFormDynamicProps> = ({
     devices,
     certificates,
     languages,
+    projects,
   ]);
 
   // --------------------------------------------------------------------------
@@ -1456,6 +1678,56 @@ const CVFormDynamic: React.FC<CVFormDynamicProps> = ({
   }, []);
 
   // --------------------------------------------------------------------------
+  // Specific Handlers for Project Details
+  // --------------------------------------------------------------------------
+  const addDetail = useCallback((projId: string) => {
+    setProjects((prev) =>
+      prev.map((proj) => {
+        if (proj.id === projId) {
+          return {
+            ...proj,
+            details: [...proj.details, { id: generateId(), description: "" }],
+          };
+        }
+        return proj;
+      }),
+    );
+  }, []);
+
+  const updateDetail = useCallback(
+    (projId: string, detailId: string, value: string) => {
+      setProjects((prev) =>
+        prev.map((proj) => {
+          if (proj.id === projId) {
+            return {
+              ...proj,
+              details: proj.details.map((d) =>
+                d.id === detailId ? { ...d, description: value } : d,
+              ),
+            };
+          }
+          return proj;
+        }),
+      );
+    },
+    [],
+  );
+
+  const removeDetail = useCallback((projId: string, detailId: string) => {
+    setProjects((prev) =>
+      prev.map((proj) => {
+        if (proj.id === projId) {
+          return {
+            ...proj,
+            details: proj.details.filter((d) => d.id !== detailId),
+          };
+        }
+        return proj;
+      }),
+    );
+  }, []);
+
+  // --------------------------------------------------------------------------
   // Visibility Logic Based on Form Type
   // --------------------------------------------------------------------------
   const showPhoto = formType === "Type 2";
@@ -1525,6 +1797,20 @@ const CVFormDynamic: React.FC<CVFormDynamicProps> = ({
           addItem={addItem}
           updateItem={updateItem}
           removeItem={removeItem}
+        />
+
+        {/* =======================================================================
+            5. PROJECTS
+            ======================================================================= */}
+        <ProjectSection
+          projects={projects}
+          setProjects={setProjects}
+          addItem={addItem}
+          updateItem={updateItem}
+          removeItem={removeItem}
+          addDetail={addDetail}
+          updateDetail={updateDetail}
+          removeDetail={removeDetail}
         />
 
         {/* =======================================================================

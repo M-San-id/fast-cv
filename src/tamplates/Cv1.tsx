@@ -10,8 +10,9 @@ import {
 } from "@react-pdf/renderer";
 import CVFormDynamic, {
   type CVData,
-  type Experience,
   type Education,
+  type Experience,
+  type Project,
   type Skill,
   type Language,
 } from "../component/form/CvFromDynamic";
@@ -124,6 +125,7 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
     summary,
     education,
     experiences,
+    projects,
     hardSkills,
     softSkills,
     languages,
@@ -218,6 +220,22 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
           ))}
         </View>
 
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Project</Text>
+          {projects.map((proj: Project) => (
+            <View key={proj.id} style={{ marginBottom: 0 }}>
+              <Text>{proj.name || "Wiwok de Tok"}</Text>
+              <Text>{proj.year}</Text>
+              <Text>{proj.description}</Text>
+              {proj.details.map((detail) => (
+                <Text key={detail.id} style={styles.itemDescription}>
+                  • {detail.description}
+                </Text>
+              ))}
+            </View>
+          ))}
+        </View>
+
         {/* Skills Section */}
         {(hardSkills.length > 0 || softSkills.length > 0) && (
           <View style={styles.section}>
@@ -288,6 +306,7 @@ const defaultCVData: CVData = {
   devices: [],
   certificates: [],
   languages: [],
+  projects: [],
 };
 
 export default function Cv1() {
