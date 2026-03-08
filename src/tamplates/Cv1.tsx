@@ -14,7 +14,7 @@ import CVFormDynamic, {
   type Experience,
   type Project,
   type Skill,
-  type Language,
+  type Certificate,
 } from "../component/form/CvFromDynamic";
 import { Download } from "lucide-react";
 
@@ -128,7 +128,7 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
     projects,
     hardSkills,
     softSkills,
-    languages,
+    certificates,
   } = data;
 
   return (
@@ -148,34 +148,28 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
             <Text style={{ fontSize: 14, fontWeight: "bold" }}>
               Professional Summary
             </Text>
-            <Text style={{ fontSize: 12 }}>
-              {summary ||
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt orci vel tellus varius varius. Etiam elementum leo dolor, at mattis felis rhoncus eu. Mauris vel neque id lorem tristique."}
-            </Text>
+            <Text style={{ fontSize: 12 }}>{summary}</Text>
           </View>
           <View style={styles.contact}>
             <View style={styles.contactCard}>
               <Text style={{ fontWeight: "bold", color: "#278067" }}>
                 Phone
               </Text>
-              <Text>{personalInfo.phone || "08123456789"}</Text>
+              <Text>{personalInfo.phone}</Text>
             </View>
 
             <View style={styles.contactCard}>
               <Text style={{ fontWeight: "bold", color: "#278067" }}>
                 Email
               </Text>
-              <Text>{personalInfo.email || "budiono@gmail.com"}</Text>
+              <Text>{personalInfo.email}</Text>
             </View>
 
             <View style={styles.contactCard}>
               <Text style={{ fontWeight: "bold", color: "#278067" }}>
                 Address
               </Text>
-              <Text>
-                {personalInfo.address ||
-                  "Jl. Pegangsaan Timur No. 52, Jakarta Pusat"}
-              </Text>
+              <Text>{personalInfo.address}</Text>
             </View>
           </View>
         </View>
@@ -185,11 +179,9 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
           {education.map((edu: Education) => (
             <View key={edu.id} style={{ marginBottom: 6 }}>
               <View style={styles.itemRow}>
-                <Text style={styles.itemTitle}>
-                  {edu.institution || "Institusi"}
-                </Text>
+                <Text style={styles.itemTitle}>{edu.institution}</Text>
                 <Text style={styles.itemDate}>
-                  {edu.startDate} - {edu.endDate || "Sekarang"}
+                  {edu.startDate} - {edu.endDate}
                 </Text>
               </View>
               <Text style={styles.itemSubtitle}>
@@ -205,10 +197,10 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
             <View key={exp.id} style={{ marginBottom: 6 }}>
               <View style={styles.itemRow}>
                 <Text style={styles.itemTitle}>
-                  {exp.position || "Posisi"} – {exp.company || "Perusahaan"}
+                  {exp.position} - {exp.company}
                 </Text>
                 <Text style={styles.itemDate}>
-                  {exp.startDate} – {exp.endDate || "Sekarang"}
+                  {exp.startDate} - {exp.endDate || "Sekarang"}
                 </Text>
               </View>
               {exp.tasks.map((task) => (
@@ -224,9 +216,11 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
           <Text style={styles.sectionTitle}>Project</Text>
           {projects.map((proj: Project) => (
             <View key={proj.id} style={{ marginBottom: 0 }}>
-              <Text>{proj.name || "Wiwok de Tok"}</Text>
-              <Text>{proj.year}</Text>
-              <Text>{proj.description}</Text>
+              <View>
+                <Text style={styles.itemTitle}>{proj.name}</Text>
+                <Text style={styles.itemDate}>{proj.year}</Text>
+              </View>
+              <Text style={styles.itemSubtitle}>{proj.description}</Text>
               {proj.details.map((detail) => (
                 <Text key={detail.id} style={styles.itemDescription}>
                   • {detail.description}
@@ -245,7 +239,7 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
                 <Text
                   style={{ fontSize: 11, fontWeight: "bold", marginBottom: 2 }}
                 >
-                  Hard Skills
+                  Skills
                 </Text>
                 <Text style={styles.skillTag}>
                   {hardSkills
@@ -273,14 +267,20 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
           </View>
         )}
 
-        {/* Language Section */}
-        {languages.length > 0 && (
+        {/* Certificate Section */}
+        {certificates.length > 0 && (
           <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Languages</Text>
-            {languages.map((lang: Language) => (
-              <Text key={lang.id} style={styles.skillTag}>
-                {lang.name} {lang.proficiency ? `(${lang.proficiency})` : ""}
-              </Text>
+            <Text style={styles.sectionTitle}>Certificates</Text>
+            {certificates.map((cert: Certificate) => (
+              <View key={cert.id} style={{ marginBottom: 4 }}>
+                <View style={styles.itemRow}>
+                  <Text style={styles.itemTitle}>{cert.name}</Text>
+                  <Text style={styles.itemDate}>{cert.date}</Text>
+                </View>
+                {cert.issuer && (
+                  <Text style={styles.itemSubtitle}>{cert.issuer}</Text>
+                )}
+              </View>
             ))}
           </View>
         )}
@@ -317,24 +317,31 @@ export default function Cv1() {
   }, []);
 
   return (
-    <div className="flex flex-col md:flex-row">
-      <CVFormDynamic formType="Type 3" onDataUpdate={handleDataUpdate} />
-      <div className="flex justify-center bg-white">
-        <PDFDownloadLink document={<Cv1PDF data={cvData} />} fileName="cv.pdf">
-          <button
-            className="bg-blue-50 text-center w-48 rounded-2xl h-14 relative text-black text-lg font-semibold group"
-            type="button"
-          >
-            <div className="bg-blue-400 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500">
-              <Download />
-            </div>
-            <p>Download</p>
-          </button>
-        </PDFDownloadLink>
+    <div className="flex flex-col md:flex-row p-20 gap-10 mb-50">
+      <div className="max-h-screen overflow-y-scroll no-scrollbar flex-1">
+        <CVFormDynamic formType="Type 3" onDataUpdate={handleDataUpdate} />
       </div>
-      <PDFViewer style={{ width: "100%", height: "100vh" }}>
-        <Cv1PDF data={cvData} />
-      </PDFViewer>
+      <div className="max-h-screen max-w-1/2 justify-center flex-1">
+        <PDFViewer style={{ width: "100%", height: "115%" }}>
+          <Cv1PDF data={cvData} />
+        </PDFViewer>
+        <div className="flex justify-center bg-white">
+          <PDFDownloadLink
+            document={<Cv1PDF data={cvData} />}
+            fileName={`${cvData.personalInfo.fullName}-CV.pdf`}
+          >
+            <button
+              className="bg-blue-50 text-center w-48 rounded-2xl h-14 relative text-black text-lg font-semibold group"
+              type="button"
+            >
+              <div className="bg-blue-400 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500">
+                <Download />
+              </div>
+              <p>Download</p>
+            </button>
+          </PDFDownloadLink>
+        </div>
+      </div>
     </div>
   );
 }

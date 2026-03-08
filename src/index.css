@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+/* Di file CSS utama Anda */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE dan Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
