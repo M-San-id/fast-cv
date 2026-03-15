@@ -1,4 +1,4 @@
-import Cv1 from "../tamplates/Cv1";
+import Cv1 from "../tamplates/CV1/Cv1";
 
 function Builder() {
   return <Cv1 />;
