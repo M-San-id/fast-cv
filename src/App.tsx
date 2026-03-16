@@ -11,13 +11,13 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/builder" element={<Builder />} />
+          <Route path="/builder/:templateId" element={<Builder />} />
           <Route path="/templates" element={<Templates />} />
         </Routes>
         <Footer />
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -591,7 +591,7 @@ const placeholderCVData = {
   ] as Certificate[],
 };
 
-const defaultCVData: CVData = {
+export const defaultCVData: CVData = {
   personalInfo: {
     profilePhoto: "",
     fullName: "",
