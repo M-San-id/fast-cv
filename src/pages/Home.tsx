@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
 
 function Home() {
   return (
-    <div>Home</div>
-  )
+    <>
+      <div className="h-screen bg-linear-to-br from-gray-50 to-gray-100"></div>
+      <div className="h-screen bg-linear-to-br from-gray-50 to-gray-100"></div>
+      <div className="h-screen bg-linear-to-br from-gray-50 to-gray-100"></div>
+      <div className="h-screen bg-linear-to-br from-gray-50 to-gray-100"></div>
+    </>
+  );
 }
 
-export default Home
+export default Home;

@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
-/* Di file CSS utama Anda */
+@theme {
+  --breakpoint-*: initial;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
   .no-scrollbar {
-    -ms-overflow-style: none; /* IE dan Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

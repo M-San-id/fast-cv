@@ -26,7 +26,7 @@ function Templates() {
   const categories = Object.keys(grouped) as TemplateCategory[];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Page Header */}
         <div className="text-center mb-16">
@@ -63,7 +63,7 @@ function Templates() {
                     className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-blue-200 flex flex-col"
                   >
                     {/* Thumbnail */}
-                    <div className="relative h-52 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden">
+                    <div className="relative h-52 bg-linear-to-br from-gray-100 to-gray-200 flex items-center justify-center overflow-hidden">
                       {template.thumbnail ? (
                         <img
                           src={template.thumbnail}
