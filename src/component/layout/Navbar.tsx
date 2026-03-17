@@ -1,11 +1,13 @@
 import { ChevronRight, Menu, Moon, Sun, X, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useTheme } from "../../hooks/ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const isDarkMode = theme === "dark";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,13 +23,9 @@ const Navbar = () => {
     { name: "Templates", href: "/templates" },
   ];
 
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
   return (
     <div
-      className={`transition-colors duration-500 ${isDarkMode ? "bg-zinc-950 text-neutral-50" : "bg-neutral-50 text-zinc-950"}`}
+      className={`transition-colors duration-500 ${theme === "dark" ? "bg-zinc-950 text-neutral-50" : "bg-neutral-50 text-zinc-950"}`}
     >
       {/* Background Decorative Elements */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10">
@@ -65,7 +63,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -93,7 +91,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Actions */}
-          <div className="md:hidden flex items-center gap-4">
+          <div className="lg:hidden flex items-center gap-4">
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-full ${isDarkMode ? "text-zinc-400" : "text-zinc-600"}`}
@@ -108,42 +106,42 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu Overlay */}
-        <div
-          className={`fixed inset-0 top-[64px] md:hidden transition-all duration-500 ease-in-out ${
-            isOpen ? "opacity-100 visible" : "opacity-0 invisible"
-          } ${isDarkMode ? "bg-zinc-950/95 backdrop-blur-xl" : "bg-white/95 backdrop-blur-xl"}`}
-        >
-          <div className="flex flex-col p-8 gap-6">
-            {navLinks.map((link, index) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                style={{ transitionDelay: `${index * 50}ms` }}
-                className={`flex justify-between items-center text-sm font-semibold border-b pb-4 transition-all no-underline ${
-                  isOpen
-                    ? "translate-x-0 opacity-100"
-                    : "-translate-x-10 opacity-0"
-                } ${isDarkMode ? "border-zinc-800 text-neutral-50" : "border-zinc-200 text-zinc-900"}`}
-                onClick={() => setIsOpen(false)}
-              >
-                <span className="hover:text-violet-500 transition-colors">
-                  {link.name}
-                </span>
-                <ChevronRight
-                  className={isDarkMode ? "text-zinc-600" : "text-zinc-300"}
-                />
-              </Link>
-            ))}
-            <a href="https://trakteer.id/sans26/tip">
-              <button className="mt-4 w-full py-4 rounded-2xl bg-linear-to-r from-violet-600 to-cyan-600 text-white font-bold text-lg shadow-lg">
-                Trakteer
-              </button>
-            </a>
-          </div>
-        </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`fixed inset-0 top-[64px] z-40 lg:hidden bg-neutral-50/70 dark:bg-zinc-950/70 backdrop-blur-md transition-all duration-500 ease-in-out overflow-y-auto min-h-[calc(100vh-64px)] ${
+          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+      >
+        <div className="flex flex-col p-8 gap-6">
+          {navLinks.map((link, index) => (
+            <Link
+              key={link.name}
+              to={link.href}
+              style={{ transitionDelay: `${index * 50}ms` }}
+              className={`flex justify-between items-center text-sm font-semibold border-b pb-4 transition-all no-underline ${
+                isOpen
+                  ? "translate-x-0 opacity-100"
+                  : "-translate-x-10 opacity-0"
+              } ${isDarkMode ? "border-zinc-800 text-neutral-50" : "border-zinc-200 text-zinc-900"}`}
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="hover:text-violet-500 transition-colors">
+                {link.name}
+              </span>
+              <ChevronRight
+                className={isDarkMode ? "text-zinc-600" : "text-zinc-300"}
+              />
+            </Link>
+          ))}
+          <a href="https://trakteer.id/sans26/tip">
+            <button className="mt-4 w-full py-4 rounded-2xl bg-linear-to-r from-violet-600 to-cyan-600 text-white font-bold text-lg shadow-lg">
+              Trakteer
+            </button>
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

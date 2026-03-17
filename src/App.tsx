@@ -4,18 +4,22 @@ import Templates from "./pages/Templates";
 import Home from "./pages/Home";
 import Navbar from "./component/layout/Navbar";
 import Footer from "./component/layout/Footer";
+import { ThemeProvider } from "./hooks/ThemeContext";
+
 function App() {
   return (
     <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/builder/:templateId" element={<Builder />} />
-          <Route path="/templates" element={<Templates />} />
-        </Routes>
-        <Footer />
-      </Router>
+      <ThemeProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/builder/:templateId" element={<Builder />} />
+            <Route path="/templates" element={<Templates />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </ThemeProvider>
     </>
   );
 }
