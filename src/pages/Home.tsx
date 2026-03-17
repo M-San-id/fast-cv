@@ -10,6 +10,8 @@ import {
 import { Link } from "react-router-dom";
 import SpotlightCard from "../component/ui/SpolightCard";
 import { useEffect, useState } from "react";
+import CardSwap, { Card } from "../component/ui/CardSwap";
+import FloatingLines from "../component/ui/background/FloatingLines";
 
 function Home() {
   const [animate, setAnimate] = useState(false);
@@ -29,7 +31,7 @@ function Home() {
           name: "FastCV",
           value: 0.2,
           display: "0.2s",
-          max: 5,
+          max: 3,
           color: "bg-blue-600 dark:bg-violet-600",
           active: true,
         },
@@ -37,7 +39,7 @@ function Home() {
           name: "Other platform",
           value: 2.4,
           display: "2.4s",
-          max: 5,
+          max: 3,
           color: "bg-slate-400 dark:bg-neutral-500",
           active: false,
         },
@@ -53,7 +55,7 @@ function Home() {
           name: "FastCV",
           value: 256,
           display: "256KB",
-          max: 4096,
+          max: 3072,
           color: "bg-blue-600 dark:bg-violet-600",
           active: true,
         },
@@ -61,7 +63,7 @@ function Home() {
           name: "Other platform",
           value: 2048,
           display: ">2MB",
-          max: 4096,
+          max: 3072,
           color: "bg-slate-400 dark:bg-neutral-500",
           active: false,
         },
@@ -72,11 +74,20 @@ function Home() {
   return (
     <>
       {/* hero section */}
-      <div className="h-screen bg-neutral-50 dark:bg-zinc-950 transition-colors duration-300 flex flex-col items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <div className="h-screen bg-neutral-50 dark:bg-zinc-950 transition-colors duration-300 flex flex-col items-center justify-center py-16 px-4 sm:px-6 lg:px-8 relative">
+        <FloatingLines
+          enabledWaves={["top", "middle", "bottom"]}
+          lineCount={5}
+          lineDistance={5}
+          bendRadius={5}
+          bendStrength={-0.5}
+          interactive={true}
+          parallax={true}
+        />
+        <div className="max-w-6xl p-5 mx-auto relative z-10 backdrop-blur-sm">
           <h1 className="text-3xl font-bold dark:text-neutral-50">
-            Create a Professional
-            <span className="text-violet-600">CV in Minutes</span>
+            Create a Professional <br />
+            <span className="text-violet-600 ">CV in Minutes</span>
           </h1>
           <p className="text-base my-4 dark:text-neutral-50">
             Combine your CV with artificial intelligence. Create a standout,
@@ -99,8 +110,8 @@ function Home() {
             Did you know?
           </h2>
           <p className="text-base my-4 dark:text-neutral-50 text-center">
-            <span className="text-red-500">Over 75% of resumes</span> are
-            rejected by ATS systems before they're even read by a human.
+            <span className="text-red-500 font-bold">Over 75% of resumes</span>
+            are rejected by ATS systems before they're even read by a human.
           </p>
           <SpotlightCard
             className="custom-spotlight-card dark:text-neutral-50 my-6"
@@ -242,15 +253,52 @@ function Home() {
           Apply for your dream job with confidence using an AI-reviewed CV with
           FastCV. Try it free now.
         </p>
-        <Link to="/templates">
-          <div className="flex justify-center">
-            <button className=" py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white dark:bg-violet-600 dark:hover:bg-violet-700 font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer">
-              <div className="flex items-center gap-3 hover:gap-4 transition-all duration-300 transition-ease-in-out">
-                Just Try It <ArrowRight />
-              </div>
-            </button>
-          </div>
-        </Link>
+        <div className="w-full max-w-6xl mx-auto h-[700px] relative overflow-hidden bg-neutral-100 dark:bg-zinc-950 rounded-2xl border border-neutral-300 dark:border-zinc-800">
+          <FloatingLines
+            enabledWaves={["top", "middle", "bottom"]}
+            lineCount={5}
+            lineDistance={5}
+            bendRadius={5}
+            bendStrength={-0.5}
+            interactive={true}
+            parallax={true}
+          />
+
+          <h3 className="text-xl font-bold dark:text-neutral-50 m-5 z-50 relative">
+            100% free. <br />
+            <span className="bg-linear-to-r from-blue-600 to-violet-600 dark:from-violet-600 dark:to-blue-600 bg-clip-text text-transparent text-2xl">
+              Don't believe it?
+            </span>
+          </h3>
+          <Link to="/templates">
+            <div className="relative translate-x-5 translate-y-20 z-50">
+              <button className=" py-3 px-4 bg-linear-to-r from-blue-600 to-violet-600 dark:from-violet-600 dark:to-blue-600 hover:bg-blue-700 text-white dark:bg-violet-600 dark:hover:bg-violet-700 font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer">
+                <div className="flex items-center gap-3 hover:gap-4 transition-all duration-300 transition-ease-in-out">
+                  Just Try It <ArrowRight />
+                </div>
+              </button>
+            </div>
+          </Link>
+          <CardSwap
+            cardDistance={60}
+            verticalDistance={70}
+            delay={5000}
+            pauseOnHover={false}
+          >
+            <Card>
+              <h3>Card 1</h3>
+              <p>Your content here</p>
+            </Card>
+            <Card>
+              <h3>Card 2</h3>
+              <p>Your content here</p>
+            </Card>
+            <Card>
+              <h3>Card 3</h3>
+              <p>Your content here</p>
+            </Card>
+          </CardSwap>
+        </div>
       </div>
     </>
   );
