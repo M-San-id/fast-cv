@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Navbar from "./component/layout/Navbar";
 import Footer from "./component/layout/Footer";
 import { ThemeProvider } from "./hooks/ThemeContext";
+import AIReview from "./pages/AIReview";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/builder/:templateId" element={<Builder />} />
             <Route path="/templates" element={<Templates />} />
+            <Route path="/ai-review" element={<AIReview />} />
           </Routes>
           <Footer />
         </Router>

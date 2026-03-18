@@ -84,7 +84,7 @@ function Home() {
           interactive={true}
           parallax={true}
         />
-        <div className="max-w-6xl p-5 mx-auto relative z-10 backdrop-blur-sm">
+        <div className="max-w-6xl p-5 mx-auto relative z-10 backdrop-blur-sm rounded-lg">
           <h1 className="text-3xl font-bold dark:text-neutral-50">
             Create a Professional <br />
             <span className="text-violet-600 ">CV in Minutes</span>

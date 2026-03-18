@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 walkthrough.md.resolved
 color.md
+.env
+.gitignore

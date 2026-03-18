@@ -29,7 +29,7 @@ function Templates() {
     <div className="min-h-screen bg-neutral-50 dark:bg-zinc-950 transition-colors duration-300 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Page Header */}
-        <div className="text-center mb-16">
+        <div className="text-center my-10">
           <h1 className="text-4xl font-extrabold text-zinc-950 dark:text-neutral-50 tracking-tight sm:text-5xl">
             Pilih Template CV
           </h1>
