@@ -101,7 +101,7 @@ function AIReview() {
 
     const promptText = `Bertindaklah sebagai Senior Recruiter dan Ahli ATS. 
     Analisis teks CV berikut secara mendalam. Berikan skor (1-10) berdasarkan standar industri, 
-    ringkasan profesional, daftar kekuatan, kelemahan spesifik, dan langkah nyata perbaikan.
+    ringkasan profesional, daftar kekuatan, kelemahan spesifik, dan langkah nyata perbaikan. Berikan seluruh analisis dan respon dalam bahasa yang sama dengan CV tersebut (misal: CV berbahasa Inggris maka respon dengan bahasa Inggris, jika berbahasa Indonesia maka erspon dengan bahasa Indonrsia, dan begitu untuk bahasa yang lain)
     Respon harus dalam format JSON murni.
 
     Teks CV:
