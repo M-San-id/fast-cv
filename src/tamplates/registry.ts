@@ -8,7 +8,7 @@ import { Cv1Preview, Cv1PDF } from "./CV1/Cv1";
 // Types
 // =============================================================================
 
-export type TemplateCategory = "Profesional" | "Kreatif" | "Minimalis";
+export type TemplateCategory = "Professional" | "Creative" | "Minimalist";
 
 export interface TemplateEntry {
   id: string;
@@ -30,8 +30,8 @@ export const templateRegistry: Record<string, TemplateEntry> = {
     id: "cv1",
     name: "Modern Minimalis",
     description:
-      "Desain CV bersih dan profesional dengan tata letak modern minimalis. Cocok untuk melamar di perusahaan korporat.",
-    category: "Profesional",
+      "Desain CV bersih dan profesional dengan tata letak modern minimalis. Suitable for applying to corporate companies.",
+    category: "Professional",
     formType: "Type 3",
     PreviewComponent: Cv1Preview,
     PDFComponent: Cv1PDF,
@@ -40,8 +40,8 @@ export const templateRegistry: Record<string, TemplateEntry> = {
     id: "cv2",
     name: "Elegant Clean",
     description:
-      "Template CV dengan sentuhan elegan dan layout yang rapi. Ideal untuk posisi manajerial dan eksekutif.",
-    category: "Minimalis",
+      "CV template with an elegant touch and neat layout. Ideal for managerial and executive positions.",
+    category: "Minimalist",
     formType: "Type 2",
     // Reuse Cv1 components sebagai placeholder sampai template baru dibuat
     PreviewComponent: Cv1Preview,
@@ -51,8 +51,8 @@ export const templateRegistry: Record<string, TemplateEntry> = {
     id: "cv3",
     name: "Creative Bold",
     description:
-      "Template CV kreatif dengan tampilan yang berani dan eye-catching. Sempurna untuk industri kreatif dan desain.",
-    category: "Kreatif",
+      "Creative CV template with a bold and eye-catching look. Perfect for creative and design industries.",
+    category: "Creative",
     formType: "Type 1",
     // Reuse Cv1 components sebagai placeholder sampai template baru dibuat
     PreviewComponent: Cv1Preview,
@@ -75,9 +75,9 @@ export function getTemplatesByCategory(): Record<
   TemplateEntry[]
 > {
   const grouped: Record<TemplateCategory, TemplateEntry[]> = {
-    Profesional: [],
-    Kreatif: [],
-    Minimalis: [],
+    Professional: [],
+    Creative: [],
+    Minimalist: [],
   };
 
   for (const entry of Object.values(templateRegistry)) {

@@ -14,6 +14,7 @@ import SpotlightCard from "../component/ui/SpolightCard";
 import CardSwap, { Card } from "../component/ui/CardSwap";
 import FloatingLines from "../component/ui/background/FloatingLines";
 import { useState } from "react";
+import TextTyping from "../component/ui/TextTyping";
 
 function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -153,12 +154,15 @@ function Home() {
           parallax={true}
         />
         <div className="max-w-6xl p-5 mx-auto relative z-10 backdrop-blur-sm rounded-lg transition-all duration-1000 ease-out">
-          <h1 className="text-3xl font-bold text-neutral-900 dark:text-neutral-50 transition-all duration-1000 ease-out">
-            Create a Professional <br />
-            <span className="bg-linear-to-r from-blue-600 to-violet-600 dark:from-violet-600 dark:to-blue-600 bg-clip-text text-transparent text-2xl">
-              CV in Minutes
-            </span>
-          </h1>
+          <TextTyping
+            words={[
+              "Unlimited Efficiency",
+              "Industry Standard & ATS Friendly",
+              "Free and Fast Access",
+              "AI-Powered Review",
+            ]}
+            pauseTime={2000}
+          />
           <p className="text-base md:text-lg my-4 dark:text-neutral-50 transition-all duration-1000 ease-out">
             Combine your CV with artificial intelligence. Create a standout,
             professionally structured, and optimized resume to win the global
