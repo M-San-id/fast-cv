@@ -6,6 +6,7 @@ import Navbar from "./component/layout/Navbar";
 import Footer from "./component/layout/Footer";
 import { ThemeProvider } from "./hooks/ThemeContext";
 import AIReview from "./pages/AIReview";
+import "./App.css";
 
 function App() {
   return (
