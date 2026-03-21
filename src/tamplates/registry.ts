@@ -30,7 +30,7 @@ export const templateRegistry: Record<string, TemplateEntry> = {
     id: "cv1",
     name: "Modern Minimalis",
     description:
-      "Desain CV bersih dan profesional dengan tata letak modern minimalis. Suitable for applying to corporate companies.",
+      "Clean and professional CV design with a modern minimalist layout. Suitable for applying to corporate companies.",
     category: "Professional",
     formType: "Type 3",
     PreviewComponent: Cv1Preview,

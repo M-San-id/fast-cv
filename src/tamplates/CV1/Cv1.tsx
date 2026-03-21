@@ -296,8 +296,8 @@ export const Cv1Preview = ({ data }: { data: CVData }) => {
       : placeholderCVData.certificates;
 
   return (
-    <div className="flex items-center justify-center min-h-screen rounded-2xl bg-gray-100 py-10">
-      <div className="bg-white w-[210mm] h-[297mm] scale-[1] origin-center shadow-lg shadow-indigo-300 hover:shadow-xl hover:shadow-indigo-400 transition-shadow p-[1cm]">
+    <div className="flex items-center justify-center min-h-screen rounded-2xl bg-neutral-300 dark:bg-zinc-800 py-10 transition-colors duration-300">
+      <div className="bg-white w-[210mm] h-[297mm] max-h-[297mm] scale-[1] origin-center shadow-lg shadow-indigo-300 hover:shadow-xl hover:shadow-indigo-400 transition-all duration-300 p-[1cm]">
         <div className="header">
           <p className="name">{personalInfo.fullName || "Budiono Siregar"}</p>
           <p className="position">

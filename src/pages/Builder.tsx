@@ -31,19 +31,19 @@ export default function Builder() {
   const { PreviewComponent, PDFComponent, formType } = template;
 
   return (
-    <div className="flex flex-col md:flex-row p-20 gap-10 mb-50">
+    <div className="flex flex-col md:flex-row md:p-20 py-20 gap-10 bg-neutral-50 dark:bg-zinc-950">
       <div className="max-h-screen overflow-y-scroll no-scrollbar flex-1">
         <CVFormDynamic formType={formType} onDataUpdate={handleDataUpdate} />
-        <div className="flex justify-center bg-white">
+        <div className="flex justify-center bg-neutral-50 dark:bg-zinc-950">
           <PDFDownloadLink
             document={<PDFComponent data={cvData} />}
             fileName={`${cvData.personalInfo.fullName || "CV"}-CV.pdf`}
           >
             <button
-              className="bg-blue-50 text-center w-100 rounded-2xl h-14 relative text-black text-lg font-semibold group"
+              className="bg-blue-50 dark:bg-zinc-800 text-center my-10 w-100 rounded-2xl h-14 relative text-zinc-950 dark:text-neutral-50 text-lg font-semibold group"
               type="button"
             >
-              <div className="bg-blue-400 rounded-xl h-12 w-1/6 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-98 z-10 hover:shadow-2xl hover:shadow-blue-500 duration-500">
+              <div className="bg-blue-400 dark:bg-violet-600 rounded-2xl h-12 w-1/6 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-98 z-10 hover:shadow-2xl hover:shadow-blue-500 dark:hover:shadow-violet-600 duration-500">
                 <Download />
               </div>
               <p>Download</p>
@@ -51,7 +51,7 @@ export default function Builder() {
           </PDFDownloadLink>
         </div>
       </div>
-      <div className="max-h-screen max-w-1/2 flex-1">
+      <div className="w-[210mm] h-[297mm] scale-[0.48] md:scale-100 origin-top-left select-none">
         <PreviewComponent data={cvData} />
       </div>
     </div>

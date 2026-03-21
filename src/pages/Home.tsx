@@ -311,7 +311,7 @@ function Home() {
           <h3 className="text-xl md:text-3xl font-bold dark:text-neutral-50 m-5 md:translate-y-30 z-50 relative FadeInScale">
             100% free. <br />
             <span className="bg-linear-to-r from-blue-600 to-violet-600 dark:from-violet-600 dark:to-blue-600 bg-clip-text text-transparent text-2xl md:text-4xl">
-              Don't believe?
+              Do You Think This Is A Dream?
             </span>
           </h3>
           <Link to="/templates">

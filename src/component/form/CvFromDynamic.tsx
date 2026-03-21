@@ -186,16 +186,15 @@ export function PersonalInfoSection({
   return (
     <section className="space-y-6">
       <div className="flex items-center gap-2">
-        <h3 className="text-xl font-semibold text-gray-800">
-          1. Informasi Pribadi
+        <h3 className="text-xl font-semibold text-zinc-800 dark:text-neutral-100">
+          1. Personal Information
         </h3>
       </div>
-
-      <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="bg-zinc-50 dark:bg-zinc-900/50 p-6 rounded-lg border border-zinc-200 dark:border-zinc-800 grid grid-cols-1 md:grid-cols-2 gap-6">
         {showPhoto && (
-          <div className="col-span-1 md:col-span-2 flex flex-col items-center md:items-start space-y-3 pb-4 border-b border-gray-200">
-            <label className="block text-sm font-medium text-gray-700">
-              Foto Profil
+          <div className="col-span-1 md:col-span-2 flex flex-col items-center md:items-start space-y-3 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+            <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300">
+              Profile Picture
             </label>
             <div className="flex items-center gap-6">
               {personalInfo.profilePhoto ? (
@@ -203,7 +202,7 @@ export function PersonalInfoSection({
                   <img
                     src={personalInfo.profilePhoto}
                     alt="Profile Preview"
-                    className="w-28 h-28 object-cover rounded-full border-4 border-white shadow-md"
+                    className="w-28 h-28 object-cover rounded-full border-4 border-white dark:border-zinc-800 shadow-md"
                   />
                   <button
                     type="button"
@@ -227,7 +226,7 @@ export function PersonalInfoSection({
                   </button>
                 </div>
               ) : (
-                <div className="w-28 h-28 bg-gray-200 rounded-full flex items-center justify-center border-4 border-white shadow-md text-gray-400">
+                <div className="w-28 h-28 bg-zinc-200 dark:bg-zinc-800 rounded-full flex items-center justify-center border-4 border-white dark:border-zinc-800 shadow-md text-zinc-400 dark:text-zinc-500">
                   <svg
                     className="w-10 h-10"
                     fill="none"
@@ -244,17 +243,17 @@ export function PersonalInfoSection({
                 </div>
               )}
               <div className="flex-1">
-                <label className="cursor-pointer bg-white border border-gray-300 text-gray-700 font-medium py-2 px-4 rounded-md shadow-sm hover:bg-gray-50 transition">
-                  Pilih Foto
+                <label className="cursor-pointer bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-neutral-300 font-medium py-2 px-4 rounded-md shadow-sm hover:bg-zinc-50 dark:hover:bg-zinc-700 transition">
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handlePhotoUpload}
                     className="hidden"
                   />
+                  Upload Photo
                 </label>
-                <p className="text-xs text-gray-500 mt-2">
-                  Maks. ukuran direkomendasikan 2MB (JPG, PNG).
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
+                  Max. recommended size 2MB (JPG, PNG).
                 </p>
               </div>
             </div>
@@ -262,22 +261,22 @@ export function PersonalInfoSection({
         )}
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Nama Lengkap <span className="text-red-500">*</span>
+          <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+            Full Name <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
             name="fullName"
             value={personalInfo.fullName}
             onChange={handlePersonalInfoChange}
-            className="w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 transition-colors"
+            className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm focus:border-violet-500 focus:ring-violet-500 py-2 px-3 transition-colors"
             placeholder="John Doe"
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
             Email <span className="text-red-500">*</span>
           </label>
           <input
@@ -285,22 +284,22 @@ export function PersonalInfoSection({
             name="email"
             value={personalInfo.email}
             onChange={handlePersonalInfoChange}
-            className="w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 transition-colors"
+            className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm focus:border-violet-500 focus:ring-violet-500 py-2 px-3 transition-colors"
             placeholder="john@example.com"
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Nomor Telepon <span className="text-red-500">*</span>
+          <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+            Phone Number<span className="text-red-500">*</span>
           </label>
           <input
             type="tel"
             name="phone"
             value={personalInfo.phone}
             onChange={handlePersonalInfoChange}
-            className="w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 transition-colors"
+            className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm focus:border-violet-500 focus:ring-violet-500 py-2 px-3 transition-colors"
             placeholder="+62 812-3456-7890"
             required
           />
@@ -308,15 +307,15 @@ export function PersonalInfoSection({
 
         {showExpectedPosition && (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Posisi yang Dituju <span className="text-red-500">*</span>
+            <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+              Position <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               name="expectedPosition"
               value={personalInfo.expectedPosition}
               onChange={handlePersonalInfoChange}
-              className="w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 transition-colors"
+              className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm focus:border-violet-500 focus:ring-violet-500 py-2 px-3 transition-colors"
               placeholder="Software Engineer"
               required
             />
@@ -324,14 +323,14 @@ export function PersonalInfoSection({
         )}
 
         <div className="col-span-1 md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
-            Alamat (Opsional)
+          <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+            Address (Optional)
           </label>
           <textarea
             name="address"
             value={personalInfo.address}
             onChange={handlePersonalInfoChange}
-            className="w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-2 px-3 transition-colors"
+            className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm focus:border-violet-500 focus:ring-violet-500 py-2 px-3 transition-colors"
             rows={2}
             placeholder="Jl. Jendral Sudirman No. 1, Jakarta"
           />
@@ -344,15 +343,15 @@ export function PersonalInfoSection({
 export function SummarySection({ summary, setSummary }: SummarySectionProps) {
   return (
     <section className="space-y-4">
-      <h3 className="text-xl font-semibold text-gray-800">
-        2. Ringkasan Profesional
+      <h3 className="text-xl font-semibold text-zinc-800 dark:text-neutral-100">
+        2. Professional Summary
       </h3>
       <textarea
         value={summary}
         onChange={(e) => setSummary(e.target.value)}
-        className="w-full rounded-lg border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 py-3 px-4 transition-colors bg-gray-50"
+        className="w-full rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-sm focus:border-violet-500 focus:ring-violet-500 py-3 px-4 transition-colors"
         rows={4}
-        placeholder="Tuliskan secara singkat tentang diri Anda, pengalaman, dan apa yang bisa Anda tawarkan..."
+        placeholder="Write briefly about yourself, your experience, and what you can offer..."
       />
     </section>
   );
@@ -370,9 +369,9 @@ export function ExperienceSection({
 }: ExperienceSectionProps) {
   return (
     <section className="space-y-4">
-      <div className="flex justify-between items-center pb-2 border-b border-gray-100">
-        <h3 className="text-xl font-semibold text-gray-800">
-          3. Pengalaman Kerja / Organisasi
+      <div className="flex justify-between items-center pb-2 border-b border-zinc-100 dark:border-zinc-800">
+        <h3 className="text-xl font-semibold text-zinc-800 dark:text-neutral-100">
+          3. Work / Organization Experience
         </h3>
         <button
           type="button"
@@ -386,7 +385,7 @@ export function ExperienceSection({
               tasks: [],
             })
           }
-          className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-700 transition"
+          className="flex items-center gap-1 px-4 py-2 bg-violet-600 text-white font-medium rounded-lg shadow hover:bg-violet-700 transition"
         >
           <svg
             className="w-4 h-4"
@@ -401,26 +400,26 @@ export function ExperienceSection({
               d="M12 4v16m8-8H4"
             ></path>
           </svg>
-          Tambah Pengalaman
+          Add Experience
         </button>
       </div>
 
       <div className="space-y-4">
         {experiences.length === 0 && (
-          <div className="text-center py-8 bg-gray-50 border border-dashed border-gray-300 rounded-lg text-gray-500">
-            Belum ada pengalaman yang ditambahkan.
+          <div className="text-center py-8 bg-zinc-50 dark:bg-zinc-900/50 border border-dashed border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-500 dark:text-zinc-400">
+            No experience added yet.
           </div>
         )}
         {experiences.map((exp) => (
           <div
             key={exp.id}
-            className="p-5 md:p-6 border border-gray-200 rounded-lg bg-gray-50 shadow-sm relative group"
+            className="p-5 md:p-6 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 shadow-sm relative group"
           >
             <button
               type="button"
               onClick={() => removeItem(setExperiences, exp.id)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition"
-              title="Hapus Pengalaman"
+              className="absolute top-4 right-4 text-zinc-400 dark:text-zinc-600 hover:text-red-500 transition"
+              title="Delete Experience"
             >
               <svg
                 className="w-5 h-5"
@@ -439,24 +438,24 @@ export function ExperienceSection({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Tipe Pengalaman
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  Experience Type
                 </label>
                 <select
                   value={exp.type}
                   onChange={(e) =>
                     updateItem(setExperiences, exp.id, "type", e.target.value)
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                 >
-                  <option value="Work">Pengalaman Kerja</option>
-                  <option value="Organizational">Pengalaman Organisasi</option>
+                  <option value="Work">Work</option>
+                  <option value="Organizational">Organization</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  {exp.type === "Work" ? "Nama Perusahaan" : "Nama Organisasi"}
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  {exp.type === "Work" ? "Company Name" : "Organization Name"}
                 </label>
                 <input
                   type="text"
@@ -469,7 +468,7 @@ export function ExperienceSection({
                       e.target.value,
                     )
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                   placeholder={
                     exp.type === "Work" ? "PT. Angin ribut" : "BEM Universitas"
                   }
@@ -477,8 +476,8 @@ export function ExperienceSection({
               </div>
 
               <div className="col-span-1 md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Jabatan / Posisi
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  Position
                 </label>
                 <input
                   type="text"
@@ -491,14 +490,14 @@ export function ExperienceSection({
                       e.target.value,
                     )
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                   placeholder="Misal: Frontend Developer"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Mulai Periode
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  Start Date
                 </label>
                 <input
                   type="month"
@@ -511,13 +510,13 @@ export function ExperienceSection({
                       e.target.value,
                     )
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Akhir Periode
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  End Date
                 </label>
                 <input
                   type="month"
@@ -530,24 +529,24 @@ export function ExperienceSection({
                       e.target.value,
                     )
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                 />
-                <p className="text-xs text-gray-500 mt-1">
-                  Biarkan kosong jika masih berlangsung.
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                  Leave empty if still ongoing.
                 </p>
               </div>
             </div>
 
             {/* Deskripsi Tugas Dinamis */}
-            <div className="mt-6 border-t border-gray-200 pt-4">
+            <div className="mt-6 border-t border-zinc-200 dark:border-zinc-800 pt-4">
               <div className="flex justify-between items-center mb-3">
-                <label className="block text-sm font-medium text-gray-700">
-                  Deskripsi Tugas / Pencapaian
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300">
+                  Task / Achievement Description
                 </label>
                 <button
                   type="button"
                   onClick={() => addTask(exp.id)}
-                  className="flex items-center gap-1 text-xs px-3 py-1.5 bg-green-50 text-green-700 font-semibold rounded-md border border-green-200 hover:bg-green-100 transition"
+                  className="flex items-center gap-1 text-xs px-3 py-1.5 bg-emerald-500/10 text-emerald-500 font-semibold rounded-md border border-emerald-500/20 hover:bg-emerald-500/20 transition"
                 >
                   <svg
                     className="w-3 h-3"
@@ -562,27 +561,29 @@ export function ExperienceSection({
                       d="M12 4v16m8-8H4"
                     ></path>
                   </svg>
-                  Tambah Tugas
+                  Add Task
                 </button>
               </div>
 
               <ul className="space-y-3">
                 {exp.tasks.map((task) => (
                   <li key={task.id} className="flex gap-2 items-start">
-                    <span className="text-gray-400 mt-2">•</span>
+                    <span className="text-zinc-400 dark:text-zinc-600 mt-2">
+                      •
+                    </span>
                     <textarea
                       value={task.description}
                       onChange={(e) =>
                         updateTask(exp.id, task.id, e.target.value)
                       }
-                      className="flex-1 rounded-md border border-gray-300 py-2 px-3 focus:border-blue-500 focus:ring-blue-500 text-sm min-h-[40px] bg-white resize-y"
-                      placeholder="Jelaskan deskripsi tugas atau pencapaian yang dilakukan..."
+                      className="flex-1 rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500 text-sm min-h-[40px] resize-y"
+                      placeholder="Describe the tasks or achievements performed..."
                       rows={2}
                     />
                     <button
                       type="button"
                       onClick={() => removeTask(exp.id, task.id)}
-                      className="mt-2 text-gray-400 hover:text-red-500 transition"
+                      className="mt-2 text-zinc-400 dark:text-zinc-600 hover:text-red-500 transition"
                     >
                       <svg
                         className="w-4 h-4"
@@ -601,8 +602,8 @@ export function ExperienceSection({
                   </li>
                 ))}
                 {exp.tasks.length === 0 && (
-                  <li className="text-sm text-gray-500 italic">
-                    Belum ada deskripsi tugas.
+                  <li className="text-sm text-zinc-500 dark:text-zinc-400 italic">
+                    No tasks or achievements added yet.
                   </li>
                 )}
               </ul>
@@ -623,8 +624,10 @@ export function EducationSection({
 }: EducationSectionProps) {
   return (
     <section className="space-y-4">
-      <div className="flex justify-between items-center pb-2 border-b border-gray-100">
-        <h3 className="text-xl font-semibold text-gray-800">4. Pendidikan</h3>
+      <div className="flex justify-between items-center pb-2 border-b border-zinc-100 dark:border-zinc-800">
+        <h3 className="text-xl font-semibold text-zinc-800 dark:text-neutral-100">
+          4. Education
+        </h3>
         <button
           type="button"
           onClick={() =>
@@ -637,7 +640,7 @@ export function EducationSection({
               description: "",
             })
           }
-          className="flex items-center gap-1 px-4 py-2 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-700 transition"
+          className="flex items-center gap-1 px-4 py-2 bg-violet-600 text-white font-medium rounded-lg shadow hover:bg-violet-700 transition"
         >
           <svg
             className="w-4 h-4"
@@ -652,26 +655,26 @@ export function EducationSection({
               d="M12 4v16m8-8H4"
             ></path>
           </svg>
-          Tambah Pendidikan
+          Add Education
         </button>
       </div>
 
       <div className="space-y-4">
         {education.length === 0 && (
-          <div className="text-center py-8 bg-gray-50 border border-dashed border-gray-300 rounded-lg text-gray-500">
-            Belum ada institusi pendidikan yang ditambahkan.
+          <div className="text-center py-8 bg-zinc-50 dark:bg-zinc-900/50 border border-dashed border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-500 dark:text-zinc-400">
+            No educational institutions added yet.
           </div>
         )}
         {education.map((edu) => (
           <div
             key={edu.id}
-            className="p-5 border border-gray-200 rounded-lg bg-gray-50 shadow-sm relative group"
+            className="p-5 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 shadow-sm relative group"
           >
             <button
               type="button"
               onClick={() => removeItem(setEducation, edu.id)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition"
-              title="Hapus Pendidikan"
+              className="absolute top-4 right-4 text-zinc-400 dark:text-zinc-600 hover:text-red-500 transition"
+              title="Delete Education"
             >
               <svg
                 className="w-5 h-5"
@@ -690,8 +693,8 @@ export function EducationSection({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="col-span-1 md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Nama Institusi
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  Institution Name
                 </label>
                 <input
                   type="text"
@@ -704,14 +707,14 @@ export function EducationSection({
                       e.target.value,
                     )
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                   placeholder="Universitas Indonesia"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Gelar
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  Degree
                 </label>
                 <input
                   type="text"
@@ -719,14 +722,14 @@ export function EducationSection({
                   onChange={(e) =>
                     updateItem(setEducation, edu.id, "degree", e.target.value)
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                   placeholder="S1 / Sarjana"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Bidang / Jurusan
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  Field of Study
                 </label>
                 <input
                   type="text"
@@ -734,14 +737,14 @@ export function EducationSection({
                   onChange={(e) =>
                     updateItem(setEducation, edu.id, "field", e.target.value)
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                   placeholder="Ilmu Komputer"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Mulai Tahun
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  Start Date
                 </label>
                 <input
                   type="month"
@@ -754,13 +757,13 @@ export function EducationSection({
                       e.target.value,
                     )
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Lulus Tahun
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  End Date
                 </label>
                 <input
                   type="month"
@@ -768,7 +771,7 @@ export function EducationSection({
                   onChange={(e) =>
                     updateItem(setEducation, edu.id, "endDate", e.target.value)
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-blue-500 focus:ring-blue-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                 />
               </div>
             </div>
@@ -798,14 +801,16 @@ export function SkillSection({
       {showHardSoftDevices && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Hard Skills */}
-          <section className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+          <section className="bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-lg p-5">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="font-semibold text-gray-800">Hard Skills</h3>
+              <h3 className="font-semibold text-zinc-800 dark:text-neutral-100">
+                Hard Skills
+              </h3>
               <button
                 type="button"
                 onClick={() => addItem(setHardSkills, { name: "" })}
-                className="p-1.5 bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200 transition"
-                title="Tambah Hard Skill"
+                className="p-1.5 bg-violet-100 dark:bg-violet-500/10 text-violet-700 dark:text-violet-400 rounded-md hover:bg-violet-200 dark:hover:bg-violet-500/20 transition"
+                title="Add Hard Skill"
               >
                 <svg
                   className="w-4 h-4"
@@ -836,13 +841,13 @@ export function SkillSection({
                         e.target.value,
                       )
                     }
-                    className="flex-1 rounded-md border border-gray-300 py-1.5 px-3 focus:border-blue-500 focus:ring-blue-500 text-sm bg-white"
+                    className="flex-1 rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-1.5 px-3 focus:border-violet-500 focus:ring-violet-500 text-sm"
                     placeholder="e.g. React.js"
                   />
                   <button
                     type="button"
                     onClick={() => removeItem(setHardSkills, skill.id)}
-                    className="text-gray-400 hover:text-red-500 transition"
+                    className="text-zinc-400 dark:text-zinc-600 hover:text-red-500 transition"
                   >
                     <svg
                       className="w-4 h-4"
@@ -861,20 +866,24 @@ export function SkillSection({
                 </li>
               ))}
               {hardSkills.length === 0 && (
-                <span className="text-sm text-gray-500">Belum ada.</span>
+                <span className="text-sm text-zinc-500 dark:text-zinc-400 italic">
+                  No hard skills added yet.
+                </span>
               )}
             </ul>
           </section>
 
           {/* Soft Skills */}
-          <section className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+          <section className="bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-lg p-5">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="font-semibold text-gray-800">Soft Skills</h3>
+              <h3 className="font-semibold text-zinc-800 dark:text-neutral-100">
+                Soft Skills
+              </h3>
               <button
                 type="button"
                 onClick={() => addItem(setSoftSkills, { name: "" })}
-                className="p-1.5 bg-purple-100 text-purple-700 rounded-md hover:bg-purple-200 transition"
-                title="Tambah Soft Skill"
+                className="p-1.5 bg-purple-100 dark:bg-purple-500/10 text-purple-700 dark:text-purple-400 rounded-md hover:bg-purple-200 dark:hover:bg-purple-500/20 transition"
+                title="AddSoft Skill"
               >
                 <svg
                   className="w-4 h-4"
@@ -905,13 +914,13 @@ export function SkillSection({
                         e.target.value,
                       )
                     }
-                    className="flex-1 rounded-md border border-gray-300 py-1.5 px-3 focus:border-purple-500 focus:ring-purple-500 text-sm bg-white"
+                    className="flex-1 rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-1.5 px-3 focus:border-purple-500 focus:ring-purple-500 text-sm"
                     placeholder="e.g. Komunikasi Baik"
                   />
                   <button
                     type="button"
                     onClick={() => removeItem(setSoftSkills, skill.id)}
-                    className="text-gray-400 hover:text-red-500 transition"
+                    className="text-zinc-400 dark:text-zinc-600 hover:text-red-500 transition"
                   >
                     <svg
                       className="w-4 h-4"
@@ -930,20 +939,24 @@ export function SkillSection({
                 </li>
               ))}
               {softSkills.length === 0 && (
-                <span className="text-sm text-gray-500">Belum ada.</span>
+                <span className="text-sm text-zinc-500 dark:text-zinc-400 italic">
+                  No Soft Skills added yet.
+                </span>
               )}
             </ul>
           </section>
 
           {/* Devices / Tools */}
-          <section className="bg-gray-50 border border-gray-200 rounded-lg p-5">
+          <section className="bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-lg p-5">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="font-semibold text-gray-800">Perangkat / Tools</h3>
+              <h3 className="font-semibold text-zinc-800 dark:text-neutral-100">
+                Devices / Tools
+              </h3>
               <button
                 type="button"
                 onClick={() => addItem(setDevices, { name: "" })}
-                className="p-1.5 bg-green-100 text-green-700 rounded-md hover:bg-green-200 transition"
-                title="Tambah Tools"
+                className="p-1.5 bg-emerald-500/10 text-emerald-500 rounded-md hover:bg-emerald-500/20 transition"
+                title="Add Tools"
               >
                 <svg
                   className="w-4 h-4"
@@ -969,13 +982,13 @@ export function SkillSection({
                     onChange={(e) =>
                       updateItem(setDevices, device.id, "name", e.target.value)
                     }
-                    className="flex-1 rounded-md border border-gray-300 py-1.5 px-3 focus:border-green-500 focus:ring-green-500 text-sm bg-white"
+                    className="flex-1 rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-1.5 px-3 focus:border-emerald-500 focus:ring-emerald-500 text-sm"
                     placeholder="e.g. Git, Figma"
                   />
                   <button
                     type="button"
                     onClick={() => removeItem(setDevices, device.id)}
-                    className="text-gray-400 hover:text-red-500 transition"
+                    className="text-zinc-400 dark:text-zinc-600 hover:text-red-500 transition"
                   >
                     <svg
                       className="w-4 h-4"
@@ -994,7 +1007,9 @@ export function SkillSection({
                 </li>
               ))}
               {devices.length === 0 && (
-                <span className="text-sm text-gray-500">Belum ada.</span>
+                <span className="text-sm text-zinc-500 dark:text-zinc-400 italic">
+                  No Devide/Tools added yet.
+                </span>
               )}
             </ul>
           </section>
@@ -1004,14 +1019,14 @@ export function SkillSection({
       {/* Type 2 / 3: Combined General Skills */}
       {showCombinedSkills && (
         <section className="space-y-4">
-          <div className="flex justify-between items-center pb-2 border-b border-gray-100">
-            <h3 className="text-xl font-semibold text-gray-800">
-              Kemampuan / Skills
+          <div className="flex justify-between items-center pb-2 border-b border-zinc-100 dark:border-zinc-800">
+            <h3 className="text-xl font-semibold text-zinc-800 dark:text-neutral-100">
+              Skills
             </h3>
             <button
               type="button"
               onClick={() => addItem(setHardSkills, { name: "" })}
-              className="flex items-center gap-1 px-4 py-2 bg-indigo-600 text-white font-medium rounded-lg shadow hover:bg-indigo-700 transition"
+              className="flex items-center gap-1 px-4 py-2 bg-violet-600 text-white font-medium rounded-lg shadow hover:bg-violet-700 transition"
             >
               <svg
                 className="w-4 h-4"
@@ -1026,15 +1041,15 @@ export function SkillSection({
                   d="M12 4v16m8-8H4"
                 ></path>
               </svg>
-              Tambah Skill
+              Add Skill
             </button>
           </div>
 
-          <div className="flex flex-wrap gap-3 p-4 bg-gray-50 border border-gray-200 rounded-lg min-h-[80px]">
+          <div className="flex flex-wrap gap-3 p-4 bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-lg min-h-[80px]">
             {hardSkills.map((skill) => (
               <div
                 key={skill.id}
-                className="flex items-center bg-white border border-indigo-200 hover:border-indigo-400 rounded-full px-3 py-1 shadow-sm transition-colors group"
+                className="flex items-center bg-white dark:bg-zinc-800 border border-violet-200 dark:border-violet-500/20 hover:border-violet-400 dark:hover:border-violet-400 rounded-full px-3 py-1 shadow-sm transition-colors group"
               >
                 <input
                   type="text"
@@ -1042,13 +1057,13 @@ export function SkillSection({
                   onChange={(e) =>
                     updateItem(setHardSkills, skill.id, "name", e.target.value)
                   }
-                  className="flex-1 bg-transparent border-none focus:ring-0 p-1 text-sm text-gray-700 w-32 outline-none"
+                  className="flex-1 bg-transparent border-none focus:ring-0 p-1 text-sm text-zinc-700 dark:text-neutral-300 w-32 outline-none"
                   placeholder="Nama skill"
                 />
                 <button
                   type="button"
                   onClick={() => removeItem(setHardSkills, skill.id)}
-                  className="text-indigo-300 hover:text-red-500 ml-1 opacity-50 group-hover:opacity-100 transition"
+                  className="text-violet-300 dark:text-violet-600 hover:text-red-500 ml-1 opacity-50 group-hover:opacity-100 transition"
                 >
                   <svg
                     className="w-4 h-4"
@@ -1067,8 +1082,8 @@ export function SkillSection({
               </div>
             ))}
             {hardSkills.length === 0 && (
-              <p className="text-gray-500 text-sm italic w-full text-center my-auto">
-                Belum ada skill yang ditambahkan.
+              <p className="text-zinc-500 dark:text-zinc-400 text-sm italic w-full text-center my-auto">
+                No Skill Added yet
               </p>
             )}
           </div>
@@ -1087,16 +1102,16 @@ export function CertificateSection({
 }: CertificateSectionProps) {
   return (
     <section className="space-y-4">
-      <div className="flex justify-between items-center pb-2 border-b border-gray-100">
-        <h3 className="text-xl font-semibold text-gray-800">
-          Sertifikat / Penghargaan
+      <div className="flex justify-between items-center pb-2 border-b border-zinc-100 dark:border-zinc-800">
+        <h3 className="text-xl font-semibold text-zinc-800 dark:text-neutral-100">
+          Certificate / Award
         </h3>
         <button
           type="button"
           onClick={() =>
             addItem(setCertificates, { name: "", issuer: "", date: "" })
           }
-          className="flex items-center gap-1 px-4 py-2 bg-yellow-500 text-white font-medium rounded-lg shadow hover:bg-yellow-600 transition"
+          className="flex items-center gap-1 px-4 py-2 bg-amber-500 text-white font-medium rounded-lg shadow hover:bg-amber-600 transition"
         >
           <svg
             className="w-4 h-4"
@@ -1111,24 +1126,24 @@ export function CertificateSection({
               d="M12 4v16m8-8H4"
             ></path>
           </svg>
-          Tambah Sertifikat
+          Add Certificate
         </button>
       </div>
 
       <div className="space-y-3">
         {certificates.length === 0 && (
-          <div className="text-center py-6 bg-gray-50 border border-dashed border-gray-300 rounded-lg text-gray-500">
-            Belum ada sertifikat.
+          <div className="text-center py-6 bg-zinc-50 dark:bg-zinc-900/50 border border-dashed border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-500 dark:text-zinc-400">
+            No Certificate Added yet
           </div>
         )}
         {certificates.map((cert) => (
           <div
             key={cert.id}
-            className="flex flex-col md:flex-row gap-4 p-4 border border-gray-200 rounded-lg bg-gray-50 shadow-sm relative items-end md:items-center"
+            className="flex flex-col md:flex-row gap-4 p-4 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 shadow-sm relative items-end md:items-center"
           >
             <div className="w-full md:flex-1">
-              <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-                Nama Sertifikat
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1 uppercase tracking-wide">
+                Certificate Name
               </label>
               <input
                 type="text"
@@ -1136,13 +1151,13 @@ export function CertificateSection({
                 onChange={(e) =>
                   updateItem(setCertificates, cert.id, "name", e.target.value)
                 }
-                className="w-full rounded-md border border-gray-300 py-1.5 px-3 focus:border-yellow-500 focus:ring-yellow-500 text-sm bg-white"
+                className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-1.5 px-3 focus:border-amber-500 focus:ring-amber-500 text-sm"
                 placeholder="AWS Certified Developer"
               />
             </div>
             <div className="w-full md:flex-1">
-              <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-                Penerbit (Issuer)
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1 uppercase tracking-wide">
+                Issuer
               </label>
               <input
                 type="text"
@@ -1150,13 +1165,13 @@ export function CertificateSection({
                 onChange={(e) =>
                   updateItem(setCertificates, cert.id, "issuer", e.target.value)
                 }
-                className="w-full rounded-md border border-gray-300 py-1.5 px-3 focus:border-yellow-500 focus:ring-yellow-500 text-sm bg-white"
+                className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-1.5 px-3 focus:border-amber-500 focus:ring-amber-500 text-sm"
                 placeholder="Amazon Web Services"
               />
             </div>
             <div className="w-full md:w-32">
-              <label className="block text-xs font-semibold text-gray-600 mb-1 uppercase tracking-wide">
-                Bulan/Tahun
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-zinc-400 mb-1 uppercase tracking-wide">
+                Month/Year
               </label>
               <input
                 type="month"
@@ -1164,14 +1179,14 @@ export function CertificateSection({
                 onChange={(e) =>
                   updateItem(setCertificates, cert.id, "date", e.target.value)
                 }
-                className="w-full rounded-md border border-gray-300 py-1.5 px-3 focus:border-yellow-500 focus:ring-yellow-500 text-sm bg-white"
+                className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-1.5 px-3 focus:border-amber-500 focus:ring-amber-500 text-sm"
               />
             </div>
 
             <button
               type="button"
               onClick={() => removeItem(setCertificates, cert.id)}
-              className="absolute top-4 right-4 md:static md:ml-2 text-gray-400 hover:text-red-500 transition"
+              className="absolute top-4 right-4 md:static md:ml-2 text-zinc-400 dark:text-zinc-600 hover:text-red-500 transition"
             >
               <svg
                 className="w-5 h-5"
@@ -1203,8 +1218,10 @@ export function LanguageSection({
 }: LanguageSectionProps) {
   return (
     <section className="space-y-4">
-      <div className="flex justify-between items-center pb-2 border-b border-gray-100">
-        <h3 className="text-xl font-semibold text-gray-800">Bahasa</h3>
+      <div className="flex justify-between items-center pb-2 border-b border-zinc-100 dark:border-zinc-800">
+        <h3 className="text-xl font-semibold text-zinc-800 dark:text-neutral-100">
+          Bahasa
+        </h3>
         <button
           type="button"
           onClick={() =>
@@ -1225,20 +1242,20 @@ export function LanguageSection({
               d="M12 4v16m8-8H4"
             ></path>
           </svg>
-          Tambah Bahasa
+          Add Language
         </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {languages.length === 0 && (
-          <div className="col-span-1 md:col-span-2 text-center py-6 bg-gray-50 border border-dashed border-gray-300 rounded-lg text-gray-500">
-            Belum ada bahasa yang ditambahkan.
+          <div className="col-span-1 md:col-span-2 text-center py-6 bg-zinc-50 dark:bg-zinc-900/50 border border-dashed border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-500 dark:text-zinc-400">
+            No Language Added yet
           </div>
         )}
         {languages.map((lang) => (
           <div
             key={lang.id}
-            className="flex gap-3 p-3 border border-gray-200 rounded-lg bg-gray-50 shadow-sm items-center"
+            className="flex gap-3 p-3 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 shadow-sm items-center"
           >
             <div className="flex-1 space-y-2">
               <input
@@ -1247,8 +1264,8 @@ export function LanguageSection({
                 onChange={(e) =>
                   updateItem(setLanguages, lang.id, "name", e.target.value)
                 }
-                className="w-full rounded-md border border-gray-300 py-1.5 px-3 focus:border-teal-500 focus:ring-teal-500 text-sm bg-white"
-                placeholder="e.g. Bahasa Inggris"
+                className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-1.5 px-3 focus:border-teal-500 focus:ring-teal-500 text-sm"
+                placeholder="e.g. English"
               />
               <select
                 value={lang.proficiency}
@@ -1260,18 +1277,18 @@ export function LanguageSection({
                     e.target.value,
                   )
                 }
-                className="w-full rounded-md border border-gray-300 py-1.5 px-3 focus:border-teal-500 focus:ring-teal-500 text-sm bg-white"
+                className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-1.5 px-3 focus:border-teal-500 focus:ring-teal-500 text-sm"
               >
-                <option value="Pemula">Pemula (Beginner)</option>
-                <option value="Menengah">Menengah (Intermediate)</option>
-                <option value="Mahir">Mahir (Advanced)</option>
-                <option value="Fasih">Fasih / Native (Fluent)</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+                <option value="Fluent">Fluent / Native</option>
               </select>
             </div>
             <button
               type="button"
               onClick={() => removeItem(setLanguages, lang.id)}
-              className="text-gray-400 hover:text-red-500 transition px-2"
+              className="text-zinc-400 dark:text-zinc-600 hover:text-red-500 transition px-2"
             >
               <svg
                 className="w-5 h-5"
@@ -1306,8 +1323,10 @@ export function ProjectSection({
 }: ProjectSectionProps) {
   return (
     <section className="space-y-4">
-      <div className="flex justify-between items-center pb-2 border-b border-gray-100">
-        <h3 className="text-xl font-semibold text-gray-800">5. Proyek</h3>
+      <div className="flex justify-between items-center pb-2 border-b border-zinc-100 dark:border-zinc-800">
+        <h3 className="text-xl font-semibold text-zinc-800 dark:text-neutral-100">
+          Projects
+        </h3>
         <button
           type="button"
           onClick={() =>
@@ -1318,7 +1337,7 @@ export function ProjectSection({
               details: [],
             })
           }
-          className="flex items-center gap-1 px-4 py-2 bg-indigo-600 text-white font-medium rounded-lg shadow hover:bg-indigo-700 transition"
+          className="flex items-center gap-1 px-4 py-2 bg-violet-600 text-white font-medium rounded-lg shadow hover:bg-violet-700 transition"
         >
           <svg
             className="w-4 h-4"
@@ -1333,26 +1352,26 @@ export function ProjectSection({
               d="M12 4v16m8-8H4"
             ></path>
           </svg>
-          Tambah Proyek
+          Add Project
         </button>
       </div>
 
       <div className="space-y-4">
         {projects.length === 0 && (
-          <div className="text-center py-8 bg-gray-50 border border-dashed border-gray-300 rounded-lg text-gray-500">
-            Belum ada proyek yang ditambahkan.
+          <div className="text-center py-8 bg-zinc-50 dark:bg-zinc-900/50 border border-dashed border-zinc-300 dark:border-zinc-700 rounded-lg text-zinc-500 dark:text-zinc-400">
+            No Project Added yet
           </div>
         )}
         {projects.map((proj) => (
           <div
             key={proj.id}
-            className="p-5 md:p-6 border border-gray-200 rounded-lg bg-gray-50 shadow-sm relative group"
+            className="p-5 md:p-6 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 shadow-sm relative group"
           >
             <button
               type="button"
               onClick={() => removeItem(setProjects, proj.id)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition"
-              title="Hapus Proyek"
+              className="absolute top-4 right-4 text-zinc-400 dark:text-zinc-600 hover:text-red-500 transition"
+              title="Delete Project"
             >
               <svg
                 className="w-5 h-5"
@@ -1371,8 +1390,8 @@ export function ProjectSection({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Nama Proyek
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  Project Name
                 </label>
                 <input
                   type="text"
@@ -1380,14 +1399,14 @@ export function ProjectSection({
                   onChange={(e) =>
                     updateItem(setProjects, proj.id, "name", e.target.value)
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-indigo-500 focus:ring-indigo-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                   placeholder="Misal: Aplikasi E-Commerce"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Tahun Pengerjaan
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  Month/Year
                 </label>
                 <input
                   type="text"
@@ -1395,14 +1414,14 @@ export function ProjectSection({
                   onChange={(e) =>
                     updateItem(setProjects, proj.id, "year", e.target.value)
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-indigo-500 focus:ring-indigo-500 bg-white"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500"
                   placeholder="Misal: 2024 atau 2023 - 2024"
                 />
               </div>
 
               <div className="col-span-1 md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Deskripsi Proyek
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300 mb-1">
+                  Descripton
                 </label>
                 <textarea
                   value={proj.description}
@@ -1414,23 +1433,23 @@ export function ProjectSection({
                       e.target.value,
                     )
                   }
-                  className="w-full rounded-md border border-gray-300 py-2 px-3 focus:border-indigo-500 focus:ring-indigo-500 bg-white resize-y min-h-[60px]"
+                  className="w-full rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500 resize-y min-h-[60px]"
                   rows={3}
-                  placeholder="Jelaskan tentang proyek, tujuan, dan kontribusi Anda..."
+                  placeholder="Explain the project, goals, and your contribution..."
                 />
               </div>
             </div>
 
             {/* Detail Proyek Dinamis */}
-            <div className="mt-6 border-t border-gray-200 pt-4">
+            <div className="mt-6 border-t border-zinc-200 dark:border-zinc-800 pt-4">
               <div className="flex justify-between items-center mb-3">
-                <label className="block text-sm font-medium text-gray-700">
-                  Detail Proyek
+                <label className="block text-sm font-medium text-zinc-700 dark:text-neutral-300">
+                  Details
                 </label>
                 <button
                   type="button"
                   onClick={() => addDetail(proj.id)}
-                  className="flex items-center gap-1 text-xs px-3 py-1.5 bg-indigo-50 text-indigo-700 font-semibold rounded-md border border-indigo-200 hover:bg-indigo-100 transition"
+                  className="flex items-center gap-1 text-xs px-3 py-1.5 bg-violet-500/10 text-violet-500 font-semibold rounded-md border border-violet-500/20 hover:bg-violet-500/20 transition"
                 >
                   <svg
                     className="w-3 h-3"
@@ -1445,27 +1464,29 @@ export function ProjectSection({
                       d="M12 4v16m8-8H4"
                     ></path>
                   </svg>
-                  Tambah Detail
+                  Add Detail
                 </button>
               </div>
 
               <ul className="space-y-3">
                 {proj.details.map((detail) => (
                   <li key={detail.id} className="flex gap-2 items-start">
-                    <span className="text-gray-400 mt-2">•</span>
+                    <span className="text-zinc-400 dark:text-zinc-600 mt-2">
+                      •
+                    </span>
                     <textarea
                       value={detail.description}
                       onChange={(e) =>
                         updateDetail(proj.id, detail.id, e.target.value)
                       }
-                      className="flex-1 rounded-md border border-gray-300 py-2 px-3 focus:border-indigo-500 focus:ring-indigo-500 text-sm min-h-[40px] bg-white resize-y"
-                      placeholder="Jelaskan detail atau fitur proyek..."
+                      className="flex-1 rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white py-2 px-3 focus:border-violet-500 focus:ring-violet-500 text-sm min-h-[40px] resize-y"
+                      placeholder="Explain the project details or features..."
                       rows={2}
                     />
                     <button
                       type="button"
                       onClick={() => removeDetail(proj.id, detail.id)}
-                      className="mt-2 text-gray-400 hover:text-red-500 transition"
+                      className="mt-2 text-zinc-400 dark:text-zinc-600 hover:text-red-500 transition"
                     >
                       <svg
                         className="w-4 h-4"
@@ -1484,8 +1505,8 @@ export function ProjectSection({
                   </li>
                 ))}
                 {proj.details.length === 0 && (
-                  <li className="text-sm text-gray-500 italic">
-                    Belum ada detail proyek.
+                  <li className="text-sm text-zinc-500 dark:text-zinc-400 italic">
+                    No project details added yet.
                   </li>
                 )}
               </ul>
@@ -1744,15 +1765,15 @@ const CVFormDynamic: React.FC<CVFormDynamicProps> = ({
   // Render
   // --------------------------------------------------------------------------
   return (
-    <div className="w-full max-w-5xl mx-auto p-4 md:p-8 bg-white shadow-xl rounded-xl space-y-10 border border-gray-100">
+    <div className="w-full max-w-5xl mx-auto p-4 md:p-8 bg-white dark:bg-zinc-900/40 backdrop-blur-xl shadow-xl rounded-xl space-y-10 border border-zinc-100 dark:border-zinc-800 transition-colors duration-500">
       {/* Header Form */}
-      <div className="border-b pb-4 mb-6">
-        <h2 className="text-3xl font-bold text-gray-800 tracking-tight">
+      <div className="border-b border-zinc-100 dark:border-zinc-800 pb-4 mb-6">
+        <h2 className="text-3xl font-bold text-zinc-800 dark:text-neutral-100 tracking-tight">
           CV Builder
         </h2>
-        <p className="text-gray-500 mt-1">
-          Lengkapi form berikut untuk memformat CV Anda secara otomatis (
-          {formType}).
+        <p className="text-zinc-500 dark:text-zinc-400 mt-1">
+          Fill in the following form to format your CV automatically ({formType}
+          ).
         </p>
       </div>
 

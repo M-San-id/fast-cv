@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useTheme } from "../../hooks/ThemeContext";
 
+export const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "Templates", href: "/templates" },
+  { name: "AI Review", href: "/ai-review" },
+];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -17,11 +23,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Templates", href: "/templates" },
-    { name: "AI Review", href: "/ai-review" },
-  ];
 
   return (
     <div
@@ -71,7 +72,7 @@ const Navbar = () => {
                 className={`relative text-sm font-medium transition-colors group ${isDarkMode ? "text-zinc-400 hover:text-white" : "text-zinc-500 hover:text-zinc-900"}`}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-violet-600 transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
 
@@ -135,8 +136,8 @@ const Navbar = () => {
               />
             </Link>
           ))}
-          <a href="https://trakteer.id/sans26/tip">
-            <button className="mt-4 w-full py-4 rounded-2xl bg-linear-to-r from-violet-600 to-cyan-600 text-white font-bold text-lg shadow-lg">
+          <a href="https://trakteer.id/sans26/tip" target="_blank">
+            <button className="mt-4 w-full py-4 rounded-2xl bg-linear-to-r from-blue-600 to-violet-600 dark:from-violet-600 dark:to-blue-600 text-white font-bold text-lg shadow-lg">
               Trakteer
             </button>
           </a>
