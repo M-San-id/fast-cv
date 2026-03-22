@@ -51,7 +51,7 @@ export default function Builder() {
           </PDFDownloadLink>
         </div>
       </div>
-      <div className="w-[210mm] h-[297mm] scale-[0.48] md:scale-100 origin-top-left select-none">
+      <div className="w-[210mm] h-[297mm] scale-[0.48] md:scale-90 origin-top-left md:origin-top select-none">
         <PreviewComponent data={cvData} />
       </div>
     </div>

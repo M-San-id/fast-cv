@@ -1,21 +1,13 @@
-import { useState, useCallback } from "react";
-import {
-  Document,
-  Page,
-  PDFDownloadLink,
-  StyleSheet,
-  Text,
-  View,
-} from "@react-pdf/renderer";
-import CVFormDynamic, {
-  type CVData,
-  type Education,
-  type Experience,
-  type Project,
-  type Skill,
-  type Certificate,
+import { Document, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import type {
+  CVData,
+  Education,
+  Experience,
+  Project,
+  Skill,
+  Certificate,
 } from "../../component/form/CvFromDynamic";
-import { Download } from "lucide-react";
+
 import "./style.css";
 
 const styles = StyleSheet.create({
@@ -146,7 +138,7 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
             {personalInfo.fullName || "Budiono Siregar"}
           </Text>
           <Text style={styles.position}>
-            {personalInfo.expectedPosition || "Human Resource"}
+            {personalInfo.expectedPosition || "Software Engineer"}
           </Text>
           <View style={styles.divider}></View>
         </View>
@@ -297,11 +289,11 @@ export const Cv1Preview = ({ data }: { data: CVData }) => {
 
   return (
     <div className="flex items-center justify-center min-h-screen rounded-2xl bg-neutral-300 dark:bg-zinc-800 py-10 transition-colors duration-300">
-      <div className="bg-white w-[210mm] h-[297mm] max-h-[297mm] scale-[1] origin-center shadow-lg shadow-indigo-300 hover:shadow-xl hover:shadow-indigo-400 transition-all duration-300 p-[1cm]">
+      <div className="bg-white w-[210mm] h-[297mm] max-h-[297mm] origin-center shadow-lg shadow-indigo-300 hover:shadow-xl hover:shadow-indigo-400 transition-all duration-300 p-[1cm] scale-[0.95]">
         <div className="header">
           <p className="name">{personalInfo.fullName || "Budiono Siregar"}</p>
           <p className="position">
-            {personalInfo.expectedPosition || "Human Resource"}
+            {personalInfo.expectedPosition || "Software Engineer"}
           </p>
           <div className="divider"></div>
         </div>
@@ -610,38 +602,3 @@ export const defaultCVData: CVData = {
   languages: [],
   projects: [],
 };
-
-export default function Cv1() {
-  const [cvData, setCvData] = useState<CVData>(defaultCVData);
-
-  const handleDataUpdate = useCallback((data: CVData) => {
-    setCvData(data);
-  }, []);
-
-  return (
-    <div className="flex flex-col md:flex-row p-20 gap-10 mb-50">
-      <div className="max-h-screen overflow-y-scroll no-scrollbar flex-1">
-        <CVFormDynamic formType="Type 3" onDataUpdate={handleDataUpdate} />
-        <div className="flex justify-center bg-white">
-          <PDFDownloadLink
-            document={<Cv1PDF data={cvData} />}
-            fileName={`${cvData.personalInfo.fullName}-CV.pdf`}
-          >
-            <button
-              className="bg-blue-50 text-center w-100 rounded-2xl h-14 relative text-black text-lg font-semibold group"
-              type="button"
-            >
-              <div className="bg-blue-400 rounded-xl h-12 w-1/6 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-98 z-10 hover:shadow-2xl hover:shadow-blue-500 duration-500">
-                <Download />
-              </div>
-              <p>Download</p>
-            </button>
-          </PDFDownloadLink>
-        </div>
-      </div>
-      <div className="max-h-screen max-w-1/2 flex-1">
-        <Cv1Preview data={cvData} />
-      </div>
-    </div>
-  );
-}
