@@ -1,4 +1,11 @@
-import { Document, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import {
+  Document,
+  Page,
+  PDFViewer,
+  StyleSheet,
+  Text,
+  View,
+} from "@react-pdf/renderer";
 import type {
   CVData,
   Education,
@@ -269,188 +276,10 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
 };
 
 export const Cv1Preview = ({ data }: { data: CVData }) => {
-  const { personalInfo } = data;
-
-  const summary = data.summary || placeholderCVData.summary;
-  const education =
-    data.education.length > 0 ? data.education : placeholderCVData.education;
-  const experiences =
-    data.experiences.length > 0
-      ? data.experiences
-      : placeholderCVData.experiences;
-  const projects =
-    data.projects.length > 0 ? data.projects : placeholderCVData.projects;
-  const hardSkills =
-    data.hardSkills.length > 0 ? data.hardSkills : placeholderCVData.hardSkills;
-  const certificates =
-    data.certificates.length > 0
-      ? data.certificates
-      : placeholderCVData.certificates;
-
   return (
-    <div className="flex items-center justify-center min-h-screen rounded-2xl bg-neutral-300 dark:bg-zinc-800 py-10 transition-colors duration-300">
-      <div className="bg-white w-[210mm] h-[297mm] max-h-[297mm] origin-center shadow-lg shadow-indigo-300 hover:shadow-xl hover:shadow-indigo-400 transition-all duration-300 p-[1cm] scale-[0.95]">
-        <div className="header">
-          <p className="name">{personalInfo.fullName || "Budiono Siregar"}</p>
-          <p className="position">
-            {personalInfo.expectedPosition || "Software Engineer"}
-          </p>
-          <div className="divider"></div>
-        </div>
-        <div className="personal-info">
-          <div className="summary">
-            <p style={{ fontSize: 14, fontWeight: "bold", margin: 0 }}>
-              Professional Summary
-            </p>
-            <p style={{ fontSize: 12, margin: 0 }}>
-              {summary ||
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt orci vel tellus varius varius. Etiam elementum leo dolor, at mattis felis rhoncus eu. Mauris vel neque id lorem tristique."}
-            </p>
-          </div>
-          <div className="contact">
-            <div className="contact-card">
-              <p
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 14,
-                  color: "#278067",
-                  margin: 0,
-                }}
-              >
-                Phone
-              </p>
-              <p style={{ margin: 0 }}>{personalInfo.phone || "08123456789"}</p>
-            </div>
-
-            <div className="contact-card">
-              <p
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 14,
-                  color: "#278067",
-                  margin: 0,
-                }}
-              >
-                Email
-              </p>
-              <p style={{ margin: 0 }}>
-                {personalInfo.email || "budiono@gmail.com"}
-              </p>
-            </div>
-
-            <div className="contact-card">
-              <p
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 14,
-                  color: "#278067",
-                  margin: 0,
-                }}
-              >
-                Address
-              </p>
-              <p style={{ margin: 0 }}>
-                {personalInfo.address ||
-                  "Jl. Pegangsaan Timur No. 52, Jakarta Pusat"}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="section">
-          <p className="section-title">Education</p>
-          {education.map((edu: Education) => (
-            <div key={edu.id} style={{ marginBottom: 6 }}>
-              <div className="item-row">
-                <p className="item-title">{edu.institution || "Institusi"}</p>
-                <p className="item-date">
-                  {edu.startDate} - {edu.endDate || "Sekarang"}
-                </p>
-              </div>
-              <p className="item-subtitle">
-                {edu.degree} {edu.field ? `- ${edu.field}` : ""}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="section">
-          <p className="section-title">Experience</p>
-          {experiences.map((exp: Experience) => (
-            <div key={exp.id} style={{ marginBottom: 6 }}>
-              <div className="item-row">
-                <p className="item-title">
-                  {exp.position || "Posisi"} – {exp.company || "Perusahaan"}
-                </p>
-                <p className="item-date">
-                  {exp.startDate} – {exp.endDate || "Sekarang"}
-                </p>
-              </div>
-              {exp.tasks.map((task) => (
-                <p key={task.id} className="item-description">
-                  • {task.description}
-                </p>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        <div className="section">
-          <p className="section-title">Project</p>
-          {projects.map((proj: Project) => (
-            <div key={proj.id} style={{ marginBottom: 0 }}>
-              <div>
-                <p className="item-title">{proj.name || "Wiwok de Tok"}</p>
-                <p className="item-date">{proj.year}</p>
-              </div>
-              <p className="item-subtitle">{proj.description}</p>
-              {proj.details.map((detail) => (
-                <p key={detail.id} className="item-description">
-                  • {detail.description}
-                </p>
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* Skills Section */}
-        <div className="section">
-          <p className="section-title">Skills</p>
-          <div>
-            <p
-              style={{
-                fontSize: 11,
-                fontWeight: "bold",
-                marginBottom: 2,
-                margin: 0,
-              }}
-            >
-              Skills
-            </p>
-            <p className="skill-tag">
-              {hardSkills
-                .map((s: Skill) => s.name)
-                .filter(Boolean)
-                .join(", ")}
-            </p>
-          </div>
-        </div>
-
-        {/* Certificate Section */}
-        <div className="section">
-          <p className="section-title">Certificates</p>
-          {certificates.map((cert: Certificate) => (
-            <div key={cert.id} style={{ marginBottom: 4 }}>
-              <div className="item-row">
-                <p className="item-title">{cert.name}</p>
-                <p className="item-date">{cert.date}</p>
-              </div>
-              {cert.issuer && <p className="item-subtitle">{cert.issuer}</p>}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <PDFViewer showToolbar={false} style={{ width: "100%", height: "100%" }}>
+      <Cv1PDF data={data} />
+    </PDFViewer>
   );
 };
 
@@ -495,11 +324,6 @@ const placeholderCVData = {
           id: "placeholder-task-2",
           description:
             "Berkolaborasi dengan tim desain untuk mengimplementasikan UI/UX yang responsif",
-        },
-        {
-          id: "placeholder-task-3",
-          description:
-            "Melakukan code review dan mentoring untuk developer junior",
         },
       ],
     },
@@ -573,12 +397,6 @@ const placeholderCVData = {
       name: "AWS Certified Cloud Practitioner",
       issuer: "Amazon Web Services",
       date: "2023-05",
-    },
-    {
-      id: "placeholder-cert-2",
-      name: "Meta Front-End Developer Certificate",
-      issuer: "Meta (Coursera)",
-      date: "2022-12",
     },
   ] as Certificate[],
 };
