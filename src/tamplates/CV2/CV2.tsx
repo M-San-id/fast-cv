@@ -289,101 +289,92 @@ const placeholderCVData = {
   ] as Education[],
   experiences: [
     {
-      id: "placeholder-exp-1",
+      id: "pe-exp-1",
       type: "Work" as const,
-      company: "PT Teknologi Nusantara",
-      position: "Frontend Developer",
+      company: "PT Manufaktur Nusantara",
+      position: "Senior Process Engineer",
       startDate: "2022-08",
-      endDate: "",
+      endDate: "Present",
       tasks: [
         {
-          id: "placeholder-task-1",
+          id: "pe-task-1",
           description:
-            "Mengembangkan dan memelihara aplikasi web menggunakan React dan TypeScript",
+            "Merancang dan mengoptimalkan diagram alir proses (PFD) serta P&ID untuk meningkatkan efisiensi lini produksi sebesar 15%",
         },
         {
-          id: "placeholder-task-2",
+          id: "pe-task-2",
           description:
-            "Berkolaborasi dengan tim desain untuk mengimplementasikan UI/UX yang responsif",
+            "Melakukan analisis HAZOP dan Root Cause Analysis (RCA) untuk memastikan standar keselamatan dan meminimalkan waktu henti (downtime)",
         },
       ],
     },
     {
-      id: "placeholder-exp-2",
+      id: "pe-exp-2",
       type: "Work" as const,
-      company: "Startup Digital Indonesia",
-      position: "Web Developer Intern",
+      company: "Energi Digital Indonesia",
+      position: "Junior Process Engineer",
       startDate: "2021-06",
       endDate: "2022-06",
       tasks: [
         {
-          id: "placeholder-task-4",
+          id: "pe-task-4",
           description:
-            "Membangun fitur-fitur baru pada platform e-commerce perusahaan",
+            "Melakukan monitoring harian terhadap keseimbangan massa dan panas pada unit pemrosesan",
         },
         {
-          id: "placeholder-task-5",
+          id: "pe-task-5",
           description:
-            "Mengoptimasi performa website yang meningkatkan kecepatan loading 40%",
+            "Mengimplementasikan prosedur kontrol kualitas baru yang mengurangi tingkat kegagalan produk (reject rate) sebesar 10%",
         },
       ],
     },
   ] as Experience[],
+
   projects: [
     {
-      id: "placeholder-proj-1",
-      name: "Sistem Manajemen Inventaris",
+      id: "pe-proj-1",
+      name: "Optimasi Heat Exchanger Network",
       year: "2023",
       description:
-        "Aplikasi web full-stack untuk mengelola inventaris gudang secara real-time",
+        "Proyek pemulihan energi panas untuk mengurangi konsumsi bahan bakar pada boiler industri",
       details: [
         {
-          id: "placeholder-detail-1",
+          id: "pe-detail-1",
           description:
-            "Menggunakan React, Node.js, dan PostgreSQL sebagai tech stack utama",
+            "Menggunakan simulasi Aspen HYSYS untuk memodelkan integrasi panas yang optimal",
         },
         {
-          id: "placeholder-detail-2",
+          id: "pe-detail-2",
           description:
-            "Implementasi fitur barcode scanning dan notifikasi stok otomatis",
-        },
-      ],
-    },
-    {
-      id: "placeholder-proj-2",
-      name: "Aplikasi Booking Lapangan Olahraga",
-      year: "2022",
-      description:
-        "Platform pemesanan lapangan olahraga online dengan sistem pembayaran terintegrasi",
-      details: [
-        {
-          id: "placeholder-detail-3",
-          description: "Membangun REST API dan integrasi payment gateway",
+            "Berhasil mengurangi biaya operasional energi tahunan hingga 1,2 Miliar Rupiah",
         },
       ],
     },
   ] as Project[],
+
   hardSkills: [
-    { id: "placeholder-hs-1", name: "React" },
-    { id: "placeholder-hs-2", name: "TypeScript" },
-    { id: "placeholder-hs-3", name: "Node.js" },
+    { id: "pe-hs-1", name: "Aspen HYSYS / PRO/II" },
+    { id: "pe-hs-2", name: "Statistical Process Control (SPC)" },
+    { id: "pe-hs-3", name: "P&ID Development" },
   ] as Skill[],
+
   softSkills: [
-    { id: "placeholder-ss-1", name: "Communication" },
-    { id: "placeholder-ss-2", name: "Teamwork" },
-    { id: "placeholder-ss-3", name: "Problem Solving" },
+    { id: "pe-ss-1", name: "Analytical Thinking" },
+    { id: "pe-ss-2", name: "Project Management" },
+    { id: "pe-ss-3", name: "Safety Leadership" },
   ] as Skill[],
+
   devices: [
-    { id: "placeholder-d-1", name: "Laptop" },
-    { id: "placeholder-d-2", name: "Smartphone" },
-    { id: "placeholder-d-3", name: "Tablet" },
+    { id: "pe-d-1", name: "DCS (Distributed Control System)" },
+    { id: "pe-d-2", name: "PLC Interface" },
+    { id: "pe-d-3", name: "Precision Measuring Tools" },
   ] as Skill[],
 
   certificates: [
     {
-      id: "placeholder-cert-1",
-      name: "AWS Certified Cloud Practitioner",
-      issuer: "Amazon Web Services",
+      id: "pe-cert-1",
+      name: "Lean Six Sigma Green Belt",
+      issuer: "Six Sigma Institute",
       date: "2023-05",
     },
   ] as Certificate[],

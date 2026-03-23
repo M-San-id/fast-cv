@@ -15,6 +15,9 @@ import CardSwap, { Card } from "../component/ui/CardSwap";
 import FloatingLines from "../component/ui/background/FloatingLines";
 import { useState } from "react";
 import TextTyping from "../component/ui/TextTyping";
+import CV1thumbnail from "../assets/CV1-thumbnail.webp";
+import CV2thumbnail from "../assets/CV2-thumbnail.webp";
+import CV3thumbnail from "../assets/CV3-thumbnail.webp";
 
 function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -307,17 +310,16 @@ function Home() {
             interactive={true}
             parallax={true}
           />
-
-          <h3 className="text-xl md:text-3xl font-bold dark:text-neutral-50 m-5 md:translate-y-30 z-50 relative FadeInScale">
+          <h3 className="text-4xl md:text-6xl font-bold bg-linear-to-r from-blue-600 to-violet-600 dark:from-violet-600 dark:to-blue-600 bg-clip-text text-transparent m-5 md:translate-y-30 z-50 relative FadeInScale">
             100% free. <br />
-            <span className="bg-linear-to-r from-blue-600 to-violet-600 dark:from-violet-600 dark:to-blue-600 bg-clip-text text-transparent text-2xl md:text-4xl">
-              Do You Think This Is A Dream?
+            <span className="bg-linear-to-r from-violet-600 to-blue-600 dark:from-blue-600 dark:to-violet-600 bg-clip-text text-transparent text-2xl md:text-4xl">
+              AIO CV tools
             </span>
           </h3>
           <Link to="/templates">
-            <div className="relative translate-x-5 translate-y-30 z-50 FadeInScale">
+            <div className="relative translate-x-5 translate-y-25 z-50 FadeInScale">
               <button className=" py-3 px-4 bg-linear-to-r from-blue-600 to-violet-600 dark:from-violet-600 dark:to-blue-600 hover:bg-blue-700 text-white dark:bg-violet-600 dark:hover:bg-violet-700 font-semibold rounded-xl shadow-sm hover:shadow-md transition-all duration-1000 cursor-pointer">
-                <div className="flex items-center gap-3 hover:gap-4 transition-all duration-1000 transition-ease-in-out">
+                <div className="flex items-center gap-3 hover:gap-6 transition-all duration-1000 transition-ease-in-out">
                   Just Try It <ArrowRight />
                 </div>
               </button>
@@ -330,16 +332,16 @@ function Home() {
             pauseOnHover={false}
           >
             <Card>
-              <h3>Card 1</h3>
-              <p>Your content here</p>
+              <h3 className="text-neutral-50">Professional CV</h3>
+              <img src={CV2thumbnail} alt="" />
             </Card>
             <Card>
-              <h3>Card 2</h3>
-              <p>Your content here</p>
+              <h3 className="text-neutral-50">Creative CV</h3>
+              <img src={CV3thumbnail} alt="" />
             </Card>
             <Card>
-              <h3>Card 3</h3>
-              <p>Your content here</p>
+              <h3 className="text-neutral-50">Minimalist CV</h3>
+              <img src={CV1thumbnail} alt="" />
             </Card>
           </CardSwap>
         </div>
