@@ -255,6 +255,9 @@ export function PersonalInfoSection({
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
                   Max. recommended size 2MB (JPG, PNG).
                 </p>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-2">
+                  Recommended aspect ratio: 1:1
+                </p>
               </div>
             </div>
           </div>
@@ -1220,7 +1223,7 @@ export function LanguageSection({
     <section className="space-y-4">
       <div className="flex justify-between items-center pb-2 border-b border-zinc-100 dark:border-zinc-800">
         <h3 className="text-xl font-semibold text-zinc-800 dark:text-neutral-100">
-          Bahasa
+          Language
         </h3>
         <button
           type="button"
@@ -1409,7 +1412,7 @@ export function ProjectSection({
                   Month/Year
                 </label>
                 <input
-                  type="text"
+                  type="month"
                   value={proj.year}
                   onChange={(e) =>
                     updateItem(setProjects, proj.id, "year", e.target.value)
@@ -1752,14 +1755,16 @@ const CVFormDynamic: React.FC<CVFormDynamicProps> = ({
   // Visibility Logic Based on Form Type
   // --------------------------------------------------------------------------
   const showPhoto = formType === "Type 2";
-  const showExpectedPosition = formType === "Type 2" || formType === "Type 3";
+  const showExpectedPosition =
+    formType === "Type 2" || formType === "Type 3" || formType === "Type 1";
 
   // Skills Breakdown
   const showHardSoftDevices = formType === "Type 1";
   const showCombinedSkills = formType === "Type 2" || formType === "Type 3"; // Use hardSkills to store combined skills
 
-  const showCertificates = formType === "Type 1" || formType === "Type 3";
-  const showLanguages = formType === "Type 1" || formType === "Type 2";
+  const showCertificates =
+    formType === "Type 1" || formType === "Type 3" || formType === "Type 2";
+  const showLanguages = formType === "Type 2";
 
   // --------------------------------------------------------------------------
   // Render

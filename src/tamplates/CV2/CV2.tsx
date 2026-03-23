@@ -20,103 +20,71 @@ const styles = StyleSheet.create({
     padding: "1cm",
   },
   header: {
-    borderColor: "#000",
-    padding: "1cm",
-    gap: 10,
-    justifyContent: "space-between",
+    paddingBottom: 10,
+    borderBottom: "2px",
+    borderColor: "#000000",
   },
   name: {
-    textAlign: "center",
-    fontSize: 36,
-    width: "100%",
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "#000000",
   },
   position: {
-    textAlign: "center",
-    fontSize: 18,
-    width: "100%",
+    fontSize: 17,
+    fontWeight: "bold",
+    color: "#000000",
   },
-  divider: {
-    borderColor: "#278067",
-    borderWidth: 1,
-    width: "100%",
+  contactContainer: {
+    flexDirection: "row",
   },
-
-  personalInfo: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 20,
-  },
-
-  summary: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 5,
-    textAlign: "center",
-  },
-
   contact: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    gap: 100,
-    fontSize: 12,
+    fontSize: 11,
   },
-  contactCard: {
-    maxWidth: 150,
+  summary: {
+    fontSize: 11,
   },
-
-  section: {
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-    marginTop: 12,
-  },
-
   sectionTitle: {
-    fontSize: 16,
-    color: "#278067",
+    fontSize: 14,
     fontWeight: "bold",
+    borderBottom: "1px",
+    borderColor: "#000000",
+    paddingBottom: 5,
+    marginBottom: 10,
   },
-
-  itemRow: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 2,
+  section: {
+    paddingBottom: 5,
+    paddingTop: 5,
   },
-
   itemTitle: {
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: "bold",
   },
-
+  skillRow: {
+    flexDirection: "row",
+    gap: 15,
+  },
   itemSubtitle: {
     fontSize: 11,
-    color: "#555",
   },
-
   itemDate: {
-    fontSize: 10,
-    color: "#777",
+    fontSize: 11,
   },
-
   itemDescription: {
-    fontSize: 10,
-    color: "#333",
-    marginLeft: 10,
+    fontSize: 11,
   },
-
   skillTag: {
-    fontSize: 10,
-    color: "#333",
+    display: "flex",
+    flexDirection: "column",
+    fontSize: 11,
+    width: 180,
   },
 });
 
-interface Cv1PDFProps {
+interface Cv2PDFProps {
   data: CVData;
 }
 
-export const Cv1PDF = ({ data }: Cv1PDFProps) => {
+export const Cv2PDF = ({ data }: Cv2PDFProps) => {
   const { personalInfo } = data;
 
   const summary = data.summary || placeholderCVData.summary;
@@ -130,6 +98,10 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
     data.projects.length > 0 ? data.projects : placeholderCVData.projects;
   const hardSkills =
     data.hardSkills.length > 0 ? data.hardSkills : placeholderCVData.hardSkills;
+  const softSkills =
+    data.softSkills.length > 0 ? data.softSkills : placeholderCVData.softSkills;
+  const tools =
+    data.devices.length > 0 ? data.devices : placeholderCVData.devices;
   const certificates =
     data.certificates.length > 0
       ? data.certificates
@@ -138,42 +110,23 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <View style={styles.header}>
-          <Text style={styles.name}>
-            {personalInfo.fullName || "Budiono Siregar"}
-          </Text>
-          <Text style={styles.position}>
-            {personalInfo.expectedPosition || "Software Engineer"}
-          </Text>
-          <View style={styles.divider}></View>
-        </View>
-        <View style={styles.personalInfo}>
-          <View style={styles.summary}>
-            <Text style={{ fontSize: 14, fontWeight: "bold" }}>
-              Professional Summary
+        {/* Header Section */}
+        <View style={styles.section}>
+          <View style={styles.header}>
+            <Text style={styles.name}>
+              {personalInfo.fullName || "Anna Croft"}
             </Text>
-            <Text style={{ fontSize: 12 }}>{summary}</Text>
-          </View>
-          <View style={styles.contact}>
-            <View style={styles.contactCard}>
-              <Text style={{ fontWeight: "bold", color: "#278067" }}>
-                Phone
+            <Text style={styles.position}>
+              {personalInfo.expectedPosition || "Process Engineer"}
+            </Text>
+            <View style={styles.contactContainer}>
+              <Text style={styles.contact}>
+                {personalInfo.phone || "08123456789"} |{" "}
               </Text>
-              <Text>{personalInfo.phone || "08123456789"}</Text>
-            </View>
-
-            <View style={styles.contactCard}>
-              <Text style={{ fontWeight: "bold", color: "#278067" }}>
-                Email
+              <Text style={styles.contact}>
+                {personalInfo.email || "budiono@gmail.com"} |{" "}
               </Text>
-              <Text>{personalInfo.email || "budiono@gmail.com"}</Text>
-            </View>
-
-            <View style={styles.contactCard}>
-              <Text style={{ fontWeight: "bold", color: "#278067" }}>
-                Address
-              </Text>
-              <Text>
+              <Text style={styles.contact}>
                 {personalInfo.address ||
                   "Jl. Pegangsaan Timur No. 52, Jakarta Pusat"}
               </Text>
@@ -181,35 +134,25 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
           </View>
         </View>
 
+        {/* Summary Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Education</Text>
-          {education.map((edu: Education) => (
-            <View key={edu.id} style={{ marginBottom: 6 }}>
-              <View style={styles.itemRow}>
-                <Text style={styles.itemTitle}>{edu.institution}</Text>
-                <Text style={styles.itemDate}>
-                  {edu.startDate} - {edu.endDate}
-                </Text>
-              </View>
-              <Text style={styles.itemSubtitle}>
-                {edu.degree} {edu.field ? `- ${edu.field}` : ""}
-              </Text>
-            </View>
-          ))}
+          <View style={styles.summary}>
+            <Text style={styles.sectionTitle}>Summary</Text>
+            <Text style={{ fontSize: 12 }}>{summary}</Text>
+          </View>
         </View>
 
+        {/* Experience Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Experience</Text>
           {experiences.map((exp: Experience) => (
             <View key={exp.id} style={{ marginBottom: 6 }}>
-              <View style={styles.itemRow}>
-                <Text style={styles.itemTitle}>
-                  {exp.position} - {exp.company}
-                </Text>
-                <Text style={styles.itemDate}>
-                  {exp.startDate} - {exp.endDate || "Present"}
-                </Text>
-              </View>
+              <Text style={styles.itemTitle}>
+                {exp.position} - {exp.company}
+              </Text>
+              <Text style={styles.itemDate}>
+                {exp.startDate} - {exp.endDate || "Present"}
+              </Text>
               {exp.tasks.map((task) => (
                 <Text key={task.id} style={styles.itemDescription}>
                   • {task.description}
@@ -219,6 +162,7 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
           ))}
         </View>
 
+        {/* Project Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Project</Text>
           {projects.map((proj: Project) => (
@@ -240,17 +184,56 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
         {/* Skills Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Skills</Text>
-          <View>
-            <Text style={{ fontSize: 11, fontWeight: "bold", marginBottom: 2 }}>
-              Skills
-            </Text>
-            <Text style={styles.skillTag}>
-              {hardSkills
-                .map((s: Skill) => s.name)
-                .filter(Boolean)
-                .join(", ")}
-            </Text>
+          <View style={styles.skillRow}>
+            <View style={styles.skillTag}>
+              <Text
+                style={{ fontSize: 11, fontWeight: "bold", marginBottom: 2 }}
+              >
+                Hard Skills
+              </Text>
+              {hardSkills.map((s: Skill) => (
+                <Text key={s.id}>• {s.name}</Text>
+              ))}
+            </View>
+            <View style={styles.skillTag}>
+              <Text
+                style={{ fontSize: 11, fontWeight: "bold", marginBottom: 2 }}
+              >
+                Soft Skills
+              </Text>
+              {softSkills.map((s: Skill) => (
+                <Text key={s.id}>• {s.name}</Text>
+              ))}
+            </View>
+            <View style={styles.skillTag}>
+              <Text
+                style={{ fontSize: 11, fontWeight: "bold", marginBottom: 2 }}
+              >
+                Tools
+              </Text>
+              {tools.map((s: Skill) => (
+                <Text key={s.id}>• {s.name}</Text>
+              ))}
+            </View>
           </View>
+        </View>
+
+        {/* Education Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Education</Text>
+          {education.map((edu: Education) => (
+            <View key={edu.id} style={{ marginBottom: 6 }}>
+              <View>
+                <Text style={styles.itemTitle}>{edu.institution}</Text>
+                <Text style={styles.itemDate}>
+                  {edu.startDate} - {edu.endDate}
+                </Text>
+              </View>
+              <Text style={styles.itemSubtitle}>
+                {edu.degree} {edu.field ? `- ${edu.field}` : ""}
+              </Text>
+            </View>
+          ))}
         </View>
 
         {/* Certificate Section */}
@@ -258,7 +241,7 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
           <Text style={styles.sectionTitle}>Certificates</Text>
           {certificates.map((cert: Certificate) => (
             <View key={cert.id} style={{ marginBottom: 4 }}>
-              <View style={styles.itemRow}>
+              <View>
                 <Text style={styles.itemTitle}>{cert.name}</Text>
                 <Text style={styles.itemDate}>{cert.date}</Text>
               </View>
@@ -273,10 +256,10 @@ export const Cv1PDF = ({ data }: Cv1PDFProps) => {
   );
 };
 
-export const Cv1Preview = ({ data }: { data: CVData }) => {
+export const Cv2Preview = ({ data }: { data: CVData }) => {
   return (
     <PDFViewer showToolbar={false} style={{ width: "100%", height: "100%" }}>
-      <Cv1PDF data={data} />
+      <Cv2PDF data={data} />
     </PDFViewer>
   );
 };
@@ -384,9 +367,16 @@ const placeholderCVData = {
     { id: "placeholder-hs-1", name: "React" },
     { id: "placeholder-hs-2", name: "TypeScript" },
     { id: "placeholder-hs-3", name: "Node.js" },
-    { id: "placeholder-hs-4", name: "PostgreSQL" },
-    { id: "placeholder-hs-5", name: "Git" },
-    { id: "placeholder-hs-6", name: "Tailwind CSS" },
+  ] as Skill[],
+  softSkills: [
+    { id: "placeholder-ss-1", name: "Communication" },
+    { id: "placeholder-ss-2", name: "Teamwork" },
+    { id: "placeholder-ss-3", name: "Problem Solving" },
+  ] as Skill[],
+  devices: [
+    { id: "placeholder-d-1", name: "Laptop" },
+    { id: "placeholder-d-2", name: "Smartphone" },
+    { id: "placeholder-d-3", name: "Tablet" },
   ] as Skill[],
 
   certificates: [

@@ -3,6 +3,11 @@ import type { FormType, CVData } from "../component/form/CvFromDynamic";
 
 // Komponen dari CV1
 import { Cv1Preview, Cv1PDF } from "./CV1/Cv1";
+import { Cv2Preview, Cv2PDF } from "./CV2/CV2";
+import { Cv3Preview, Cv3PDF } from "./CV3/CV3";
+import CV1Thumbnail from "../assets/CV1-thumbnail.webp";
+import CV2Thumbnail from "../assets/CV2-thumbnail.webp";
+import CV3Thumbnail from "../assets/CV3-thumbnail.webp";
 
 // =============================================================================
 // Types
@@ -31,21 +36,22 @@ export const templateRegistry: Record<string, TemplateEntry> = {
     name: "Modern Minimalis",
     description:
       "Clean and professional CV design with a modern minimalist layout. Suitable for applying to corporate companies.",
-    category: "Professional",
+    category: "Minimalist",
+    thumbnail: CV1Thumbnail,
     formType: "Type 3",
     PreviewComponent: Cv1Preview,
     PDFComponent: Cv1PDF,
   },
   cv2: {
     id: "cv2",
-    name: "Elegant Clean",
+    name: "Basic Professional",
     description:
-      "CV template with an elegant touch and neat layout. Ideal for managerial and executive positions.",
-    category: "Minimalist",
-    formType: "Type 2",
-    // Reuse Cv1 components sebagai placeholder sampai template baru dibuat
-    PreviewComponent: Cv1Preview,
-    PDFComponent: Cv1PDF,
+      "CV template with a simple and professional layout. Ideal for fresh graduates and entry-level positions.",
+    category: "Professional",
+    thumbnail: CV2Thumbnail,
+    formType: "Type 1",
+    PreviewComponent: Cv2Preview,
+    PDFComponent: Cv2PDF,
   },
   cv3: {
     id: "cv3",
@@ -53,10 +59,10 @@ export const templateRegistry: Record<string, TemplateEntry> = {
     description:
       "Creative CV template with a bold and eye-catching look. Perfect for creative and design industries.",
     category: "Creative",
-    formType: "Type 1",
-    // Reuse Cv1 components sebagai placeholder sampai template baru dibuat
-    PreviewComponent: Cv1Preview,
-    PDFComponent: Cv1PDF,
+    thumbnail: CV3Thumbnail,
+    formType: "Type 2",
+    PreviewComponent: Cv3Preview,
+    PDFComponent: Cv3PDF,
   },
 };
 
